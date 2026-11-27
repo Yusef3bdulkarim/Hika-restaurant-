@@ -35,4 +35,22 @@ describe('storage.rules (deny-all)', () => {
       storage.ref('receipts/alice/order1/receipt.jpg').getDownloadURL(),
     );
   });
+
+  test('should deny upload when user is unauthenticated', async () => {
+    const storage = testEnv.unauthenticatedContext().storage();
+
+    await assertFails(
+      Promise.resolve(
+        storage.ref('receipts/alice/order1/receipt.jpg').putString('x'),
+      ),
+    );
+  });
+
+  test('should deny read when user is authenticated', async () => {
+    const storage = testEnv.authenticatedContext('alice').storage();
+
+    await assertFails(
+      storage.ref('receipts/alice/order1/receipt.jpg').getDownloadURL(),
+    );
+  });
 });

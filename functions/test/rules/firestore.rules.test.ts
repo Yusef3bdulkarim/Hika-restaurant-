@@ -38,4 +38,16 @@ describe('firestore.rules (deny-all)', () => {
 
     await assertFails(db.doc('users/alice').set({ name: 'Alice' }));
   });
+
+  test('should deny write when user is unauthenticated', async () => {
+    const db = testEnv.unauthenticatedContext().firestore();
+
+    await assertFails(db.doc('users/alice').set({ name: 'Alice' }));
+  });
+
+  test('should deny list when user is authenticated', async () => {
+    const db = testEnv.authenticatedContext('alice').firestore();
+
+    await assertFails(db.collection('menu_items').get());
+  });
 });

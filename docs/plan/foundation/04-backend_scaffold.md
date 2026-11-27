@@ -24,7 +24,7 @@
 ## 02 — Functions TypeScript package
 - **Layer:** wiring (backend)
 - **Goal:** compiling, linted TS package ready for the first callable (E5).
-- **Touch:** create `functions/package.json` (`engines.node: "24"`, `main: lib/index.js`; deps `firebase-functions`, `firebase-admin`; dev `typescript`, `eslint`, `typescript-eslint`; scripts `build`, `lint`), `functions/tsconfig.json` (`strict: true`, `outDir: lib`), `functions/eslint.config.mjs`, `functions/src/index.ts` (initializes Admin SDK only — no functions), `functions/.gitignore` (`lib/`, `node_modules/`); root `.gitignore` gets Firebase debug logs (`*-debug.log`, `.firebase/`).
+- **Touch:** create `functions/package.json` (`engines.node: "24"`, `main: lib/index.js`; deps `firebase-functions`, `firebase-admin`; dev `typescript`, `eslint`, `typescript-eslint`; scripts `build`, `lint`), `functions/tsconfig.json` (`strict: true`; in 04-03 split into `tsconfig.json` for editor/lint/tests + `tsconfig.build.json` with `outDir: lib`), `functions/eslint.config.mjs`, `functions/src/index.ts` (initializes Admin SDK only — no functions), `functions/.gitignore` (`lib/`, `node_modules/`); root `.gitignore` gets Firebase debug logs (`*-debug.log`, `.firebase/`).
 - **Do NOT touch:** rules files, `lib/` (Flutter).
 - **Done when:** `npm run build` and `npm run lint` clean; `firebase emulators:start --only functions` loads the package with 0 functions and no error.
 - **Model:** Sonnet · **Owner:** Claude · **Status:** done
@@ -32,10 +32,11 @@
 ## 03 — Rules test harness (deny-all tests)
 - **Layer:** tests (backend)
 - **Goal:** Rules are tested on the emulator from day one; every future Rules change ships with tests.
-- **Touch:** `functions/package.json` (dev `vitest`, `@firebase/rules-unit-testing`, `firebase`; scripts `test` = `vitest run`, `test:rules` = `firebase emulators:exec --only firestore,storage "vitest run test/rules"`), create `functions/vitest.config.ts`, `functions/test/rules/firestore.rules.test.ts`, `functions/test/rules/storage.rules.test.ts`.
+- **Touch:** `functions/package.json` (dev `vitest`, `@firebase/rules-unit-testing`, `firebase`; script `test:rules` = `firebase emulators:exec --only firestore,storage "node scripts/vitest.mjs run test/rules"` — plain `test` deferred to E5; wrapper = Windows drive-letter fix), create `functions/vitest.config.ts`, `functions/test/rules/firestore.rules.test.ts`, `functions/test/rules/storage.rules.test.ts`.
 - **Tests:**
   - Firestore — `should deny read when user is unauthenticated` · `should deny read when user is authenticated` · `should deny write when user is authenticated`.
   - Storage — `should deny upload when user is authenticated` · `should deny read when user is unauthenticated`.
+  - Added after review: Firestore deny write unauthenticated + deny list authenticated; Storage deny upload unauthenticated + deny read authenticated (9 total).
 - **Do NOT touch:** rules files (tests only prove the current deny-all).
 - **Done when:** `npm run test:rules` passes from `functions/`; changing a rule to `if true` makes tests fail (checked once, reverted).
 - **Model:** Sonnet · **Owner:** Claude · **Status:** done
