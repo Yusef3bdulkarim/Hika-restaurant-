@@ -41,7 +41,7 @@
 - **Do NOT touch:** theme / fonts (E1)
 - **Tests:** `should render Arabic placeholder text when app starts` · `should lay out right-to-left when app starts` (`Directionality.of` == `TextDirection.rtl`).
 - **Done when:** analyze clean; tests pass; no hard-coded string in `lib/` outside ARB.
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ---
 

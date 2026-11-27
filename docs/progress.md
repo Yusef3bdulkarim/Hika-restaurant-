@@ -6,11 +6,11 @@ _Last updated: 2026-11-27_
 - **Epic:** E0 — `foundation`
 - **Sub-feature:** 01 `project_setup` — plan `docs/plan/foundation/01-project_setup.md`
 - **Branch:** `feat/project-setup`
-- **Current task:** 01-04 l10n (Arabic) + forced RTL (todo) — 01-03 done, waiting for user commit
+- **Current task:** 01 tasks all done — next: `@code-reviewer` (sonnet) on `git diff develop...HEAD`, user manual check, PR to `develop`
 - Done: roadmap + E0 breakdown approved; `hika-dev` created; tools installed (2026-11-27)
 
 ## Next
-- Tasks 01-01 → 01-04 (Sonnet), then `@code-reviewer` + PR
+- `@code-reviewer` + manual check (both flavors side by side, Arabic title, RTL) + PR `feat/project-setup` → `develop`
 - Then plan `02-core_contracts` — user proposes `ApiResult` / `Failure` design first
 
 ## Open decisions
@@ -30,6 +30,7 @@ _Last updated: 2026-11-27_
 - 2026-11-27 · foundation 01-01 Strict lints — `analysis_options.yaml`
 - 2026-11-27 · foundation 01-02 Flavor + entrypoints — `bootstrap.dart`, `main_dev/prod.dart`, `app.dart`
 - 2026-11-27 · foundation 01-03 Android flavors + package id — `com.hika.app` / `.dev`
+- 2026-11-27 · foundation 01-04 l10n + RTL — `l10n.yaml`, `app_ar.arb`, forced `ar` locale
 
 ## Starter message for a new chat
-> كمّل من docs/progress.md — التاسك الجاية: foundation 01-04 l10n + RTL (docs/plan/foundation/01-project_setup.md).
+> كمّل من docs/progress.md — التاسك الجاية: @code-reviewer على feat/project-setup ثم PR، وبعدها plan 02-core_contracts (اقتراحي لـ ApiResult/Failure الأول).

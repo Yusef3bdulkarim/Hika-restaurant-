@@ -4,12 +4,21 @@ import 'package:hika_app/app.dart';
 
 void main() {
   group('App', () {
-    testWidgets('should render placeholder scaffold when app starts', (
+    testWidgets('should render Arabic app title when app starts', (
       tester,
     ) async {
       await tester.pumpWidget(const App());
+      await tester.pumpAndSettle();
 
-      expect(find.byType(Scaffold), findsOneWidget);
+      expect(find.text('هيكا'), findsOneWidget);
+    });
+
+    testWidgets('should lay out right-to-left when app starts', (tester) async {
+      await tester.pumpWidget(const App());
+      await tester.pumpAndSettle();
+
+      final context = tester.element(find.byType(Scaffold));
+      expect(Directionality.of(context), TextDirection.rtl);
     });
   });
 }
