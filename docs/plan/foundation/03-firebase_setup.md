@@ -42,7 +42,7 @@
 - **Do NOT touch:** `failure.dart` (no new types).
 - **Tests:** one per mapped group + `should return ServerFailure when code is unknown`.
 - **Done when:** analyze clean, tests pass; file not imported from any `domain/`.
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ---
 

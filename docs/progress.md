@@ -6,7 +6,7 @@ _Last updated: 2026-11-27_
 - **Epic:** E0 — `foundation`
 - **Sub-feature:** 03 `firebase_setup` — plan `docs/plan/foundation/03-firebase_setup.md`
 - **Branch:** `feat/firebase-setup`
-- **Current task:** 03-03 Firebase exception mapper (in progress)
+- **Current task:** 03 tasks done — `@code-reviewer` + PR
 - Done: 01 + 02 merged to `develop` (PR #1, #2) 2026-11-27
 
 ## Next
@@ -39,6 +39,7 @@ _Last updated: 2026-11-27_
 - 2026-11-27 · foundation 02-03 DI container — `core/di/injection.dart`, `kotlin.incremental=false`
 - 2026-11-27 · foundation 03-01 FlutterFire config — options + google-services per flavor, `firebase_core`
 - 2026-11-27 · foundation 03-02 Firebase init by flavor — `firebaseOptionsFor`, `bootstrap`
+- 2026-11-28 · foundation 03-03 Firebase exception mapper — `mapFirebaseException`
 
 ## Starter message for a new chat
 > كمّل من docs/progress.md — التاسك الجاية: foundation 03-03 Firebase exception mapper (docs/plan/foundation/03-firebase_setup.md).
