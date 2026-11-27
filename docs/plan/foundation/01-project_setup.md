@@ -32,7 +32,7 @@
 - **Touch:** `android/app/build.gradle.kts` (`namespace` + `applicationId` = `com.hika.app`; `flavorDimensions += "env"`; `productFlavors` `dev` with `applicationIdSuffix = ".dev"` + `resValue("string", "app_name", "هيكا Dev")`, `prod` with `resValue(... "هيكا")`), `android/app/src/main/AndroidManifest.xml` (`android:label="@string/app_name"`), move `MainActivity.kt` → `android/app/src/main/kotlin/com/hika/app/MainActivity.kt` (package `com.hika.app`), delete old `com/example/` folder.
 - **Do NOT touch:** release signing (Play release in E11), `ios/`
 - **Done when:** `flutter build apk --debug --flavor dev -t lib/main_dev.dart` and `--flavor prod -t lib/main_prod.dart` both succeed; both apps install on one device with the right names.
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ## 04 — l10n (Arabic) + forced RTL
 - **Layer:** wiring + presentation
