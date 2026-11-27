@@ -32,7 +32,7 @@
 - **Do NOT touch:** generated options files, DI registrations.
 - **Tests:** `should return dev project options when flavor is dev` · `should return prod project options when flavor is prod` (compare `projectId`).
 - **Done when:** analyze clean, tests pass; both flavors run on a device with no Firebase init error (manual).
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ## 03 — Firebase exception → Failure mapper
 - **Layer:** data (core)
