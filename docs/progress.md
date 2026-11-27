@@ -6,11 +6,11 @@ _Last updated: 2026-11-28_
 - **Epic:** E0 — `foundation`
 - **Sub-feature:** 04 `backend_scaffold` — plan `docs/plan/foundation/04-backend_scaffold.md`
 - **Branch:** `feat/backend-scaffold`
-- **Current task:** 04-03 Rules test harness (todo) — 04-01 + 04-02 done, waiting for user commits
+- **Current task:** 04 tasks done — waiting: user commit 04-03, then `@code-reviewer` (opus) + PR
 - Done: 01, 02, 03 merged to `develop` (PR #1-#3)
 
 ## Next
-- 04-01 config + deny-all Rules → 04-02 Functions TS → 04-03 Rules tests → `@code-reviewer` (opus) + PR
+- `@code-reviewer` (opus) on `feat/backend-scaffold` + PR
 - Then plan `05-router` (last E0 sub-feature)
 
 ## Open decisions
@@ -20,6 +20,8 @@ _Last updated: 2026-11-28_
 - `ApiSuccess` / `ApiFailure` have no value equality — add `Equatable` when the first repository test needs `expect(result, ApiSuccess(x))` (review 02)
 - iOS: Firebase options not generated — `firebaseOptionsFor` throws `UnsupportedError` on iOS; run `flutterfire configure --platforms=ios` per flavor before any iOS build
 - Emulators need Java 21+ — JDK 25 (Temurin) installed, first on PATH; Flutter still uses Android Studio JBR 21
+- Vitest fails from a lower-case drive path (`f:`) — `functions/scripts/vitest.mjs` re-runs it from `F:`
+- `functions/package.json` `overrides` pins `@grpc/grpc-js ^1.14.7` under `@firebase/firestore` — remove when `firebase` ships a fixed version
 - Kotlin incremental compile disabled (`android/gradle.properties`) — cross-drive cache bug (project F:, pub cache C:)
 - Plain `flutter run` fails (no `lib/main.dart`) — always `--flavor dev -t lib/main_dev.dart`
 - `docs/brief/*.md.crdownload` — files have the Chrome partial-download extension
@@ -44,6 +46,7 @@ _Last updated: 2026-11-28_
 - 2026-11-28 · foundation 03-03 Firebase exception mapper — `mapFirebaseException`
 - 2026-11-28 · foundation 04-01 Firebase config + deny-all Rules — `.firebaserc`, `firebase.json`, rules
 - 2026-11-28 · foundation 04-02 Functions TS package — Node 24, TS ~6.0.3 (typescript-eslint limit), ESLint flat
+- 2026-11-28 · foundation 04-03 Rules test harness — Vitest + rules-unit-testing, 5 deny-all tests, grpc-js override
 
 ## Starter message for a new chat
-> كمّل من docs/progress.md — التاسك الجاية: foundation 04-03 Rules test harness (docs/plan/foundation/04-backend_scaffold.md).
+> كمّل من docs/progress.md — التاسك الجاية: @code-reviewer (opus) على feat/backend-scaffold ثم PR، وبعدها plan foundation 05-router.

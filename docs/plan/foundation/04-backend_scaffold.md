@@ -38,7 +38,7 @@
   - Storage — `should deny upload when user is authenticated` · `should deny read when user is unauthenticated`.
 - **Do NOT touch:** rules files (tests only prove the current deny-all).
 - **Done when:** `npm run test:rules` passes from `functions/`; changing a rule to `if true` makes tests fail (checked once, reverted).
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ---
 
