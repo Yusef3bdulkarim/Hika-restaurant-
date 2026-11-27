@@ -16,7 +16,7 @@
 - **Do NOT touch:** `pubspec.yaml` (no new lint package)
 - **Content:** `analyzer.language`: `strict-casts`, `strict-inference`, `strict-raw-types`; exclude `lib/core/l10n/generated/**`. Rules (only those not already in `flutter_lints`): `prefer_single_quotes`, `prefer_final_locals`, `prefer_final_in_for_each`, `always_declare_return_types`, `avoid_dynamic_calls`, `unawaited_futures`, `directives_ordering`, `prefer_const_constructors`, `prefer_const_declarations`, `avoid_redundant_argument_values`, `use_super_parameters`, `require_trailing_commas` only if it does not fight `dart format`.
 - **Done when:** `dart analyze` clean (fix the demo code or leave it for task 02 if it is deleted there).
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ## 02 — Flavor + entrypoints
 - **Layer:** wiring
@@ -24,7 +24,7 @@
 - **Touch:** create `lib/core/config/flavor.dart` (`enum Flavor { dev, prod }`), `lib/bootstrap.dart` (`Future<void> bootstrap(Flavor flavor)`: `WidgetsFlutterBinding.ensureInitialized()` → `runApp(App(flavor: flavor))`), `lib/main_dev.dart`, `lib/main_prod.dart`, `lib/app.dart` (minimal `MaterialApp`, placeholder `Scaffold`); delete `lib/main.dart`, `test/widget_test.dart` (counter demo).
 - **Do NOT touch:** `android/`, `pubspec.yaml`
 - **Done when:** analyze clean; `flutter run -t lib/main_dev.dart` shows the placeholder (before flavors exist, without `--flavor`).
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ## 03 — Android flavors + package id
 - **Layer:** wiring
@@ -32,7 +32,7 @@
 - **Touch:** `android/app/build.gradle.kts` (`namespace` + `applicationId` = `com.hika.app`; `flavorDimensions += "env"`; `productFlavors` `dev` with `applicationIdSuffix = ".dev"` + `resValue("string", "app_name", "هيكا Dev")`, `prod` with `resValue(... "هيكا")`), `android/app/src/main/AndroidManifest.xml` (`android:label="@string/app_name"`), move `MainActivity.kt` → `android/app/src/main/kotlin/com/hika/app/MainActivity.kt` (package `com.hika.app`), delete old `com/example/` folder.
 - **Do NOT touch:** release signing (Play release in E11), `ios/`
 - **Done when:** `flutter build apk --debug --flavor dev -t lib/main_dev.dart` and `--flavor prod -t lib/main_prod.dart` both succeed; both apps install on one device with the right names.
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ## 04 — l10n (Arabic) + forced RTL
 - **Layer:** wiring + presentation
@@ -41,7 +41,7 @@
 - **Do NOT touch:** theme / fonts (E1)
 - **Tests:** `should render Arabic placeholder text when app starts` · `should lay out right-to-left when app starts` (`Directionality.of` == `TextDirection.rtl`).
 - **Done when:** analyze clean; tests pass; no hard-coded string in `lib/` outside ARB.
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ---
 

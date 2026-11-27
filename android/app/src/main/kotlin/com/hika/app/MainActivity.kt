@@ -1,4 +1,4 @@
-package com.example.hika_app
+package com.hika.app
 
 import io.flutter.embedding.android.FlutterActivity
 
