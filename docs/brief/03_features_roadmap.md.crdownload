@@ -1,0 +1,164 @@
+# Hika — الفيتشرز وخطة التنفيذ (Roadmap)
+
+> هنا بنقسم الـ 33 شاشة لفيتشرز، ونرتّبهم بترتيب بناء بيحترم الاعتماديات (الفيتشر مابيتبنيش قبل اللي معتمد عليه)، وكل فيتشر فيه: شاشاته، الـ entities، الـ UseCases، والـ Bloc. ده البلان اللي بنمشي عليه فيتشر بفيتشر.
+
+---
+
+## خريطة الموديولات → الفيتشرز
+
+| موديول التصميم | الفيتشر (features/) | الشاشات |
+|---|---|---|
+| 1 Design System | `core` + `design_system` | — |
+| 2 البداية والدخول | `onboarding` + `auth` + `address` | 1–7 |
+| 3 الرئيسية والبحث والإشعارات | `home` + `search` + `notifications` | 8–10 |
+| 4 القائمة | `menu` (+ `offers`) | 11–14 |
+| 5 السلة والدفع | `cart` + `checkout` + `payment` | 15–19 |
+| 6 الطلبات | `orders` | 20–24 |
+| 7 المحفظة والحساب | `wallet` + `account` + `support` | 25–32 |
+| 8 الحالات العامة | `core` (global states) | 33 |
+
+---
+
+## ترتيب البناء (الاعتماديات)
+
+```
+core/design_system  →  auth+onboarding  →  menu+home+search  →  cart  →  address  →  checkout  →  payment  →  orders  →  wallet  →  account+support  →  notifications+global polish
+```
+السبب: السلة محتاجة أصناف المنيو · الـ checkout محتاج السلة والعناوين · الطلبات معتمدة على الـ checkout · المحفظة معتمدة على الطلبات (النقاط).
+
+---
+
+## المرحلة 0 — تجهيز المشروع (نص يوم – يوم)
+
+- `flutter create` باسم الحزمة، إعداد **flavors** (dev/prod) و `main_dev/main_prod`.
+- إضافة الـ packages (قائمة `00_overview.md`).
+- هيكل الفولدرات (`01_architecture.md`)، إعداد `get_it`+`injectable`، `go_router` فاضي، `Dio` + interceptors هيكل، `l10n` + ARB.
+- Git + README + CI بسيط (format/analyze/test) اختياري.
+- **مخرجات:** تطبيق بيفتح شاشة فاضية، الـ DI والـ routing شغالين.
+
+## المرحلة 1 — الـ Design System والـ core (2–4 أيام)
+
+- ترجمة `tokens.json` لـ `core/theme/` (ألوان light+dark، خطوط، مسافات، زوايا، ظلال، حركة).
+- بناء **كل المكونات المشتركة** في `core/widgets` (قسم 8 في `02`) + `HikaStamp` + `HikaIcons` + الرسومات.
+- `DesignGalleryPage` (dev) بتعرض كل مكون بكل حالاته.
+- `ViewStatus` + ويدجتس الحالات (Skeleton/Empty/Offline/Error) الموحّدة.
+- `AppConfigCubit` + `ConnectivityCubit` + `core/utils` (formatters: عملة/وقت/أرقام، validators).
+- **مخرجات:** مكتبة UI جاهزة، أي شاشة بعد كده = تركيب بلوكات.
+
+---
+
+## الفيتشرز (بالترتيب)
+
+### 1) `onboarding` — Splash + الترحيب (شاشات 1–2)
+- **الشاشات:** Splash (كل حالاتها + منطق التوجيه)، الترحيب (أول مرة بس — الاتجاه النهائي لسه بيتحدد في مراجعة الدفعة 2، فابنيه مرن للنص).
+- **منطق:** قراءة "أول مرة؟" (Hive flag)، تحميل `AppConfig` الأولي، تفرع التوجيه (أول مرة/زائر/جلسة انتهت/من إشعار).
+- **Bloc:** `SplashCubit` (bootstrap). **UseCases:** `GetAppConfig`, `IsFirstLaunch`, `GetSessionState`.
+
+### 2) `auth` — الدخول والتسجيل (شاشات 3–6 + Guest sheet)
+- **الشاشات:** تسجيل الدخول، إنشاء حساب، نسيت كلمة المرور، "بعتنالك لينك"، Bottom sheet الدخول للزائر (5 نسخ)، + صفحة الويب لتغيير كلمة المرور (خارج Flutter — ملاحظة للـ backend).
+- **Entities:** `User`, `AuthSession`. **UseCases:** `Login`, `Register`, `RequestPasswordReset`, `Logout`, `GetCurrentUser`.
+- **Bloc:** `AuthBloc` (عام فوق التطبيق — بيدير الجلسة)، + `LoginCubit`/`RegisterCubit` للفورم والتحقق.
+- **تحقق مهم:** قواعد الخانات من البريف (اسم 2–40، إيميل، موبايل 11 رقم يبدأ 01، كلمة مرور 8+، مؤشر قوة)، الأخطاء العامة ("الإيميل أو كلمة المرور غير صحيحة")، 10 محاولات ← قفل 5 دقايق، إعادة إرسال اللينك 60 ثانية/5 في الساعة.
+
+### 3) `menu` — القائمة وتفاصيل الصنف (شاشات 11–13)
+- **الشاشات:** القائمة (تابات الأقسام)، تفاصيل الصنف (أحجام/إضافات/نكهات/ملاحظات/كمية + تحقق الاختيارات الإجبارية)، تفاصيل الوجبة (تبديل مكونات بفرق سعر).
+- **Entities:** `MenuCategory`, `MenuItem` (+ `ItemSize`, `Addon`, `FlavorOption`), `Combo` (+ `ComboSlot`), `CartLine` (النتيجة). 
+- **UseCases:** `GetMenu`, `GetItemDetails`, `GetComboDetails`, `SearchMenu`.
+- **Bloc:** `MenuBloc` (تحميل + كاش offline)، `ItemDetailsCubit` (الاختيارات وحساب السعر الحي).
+- **بيانات:** المنيو كامل بالأسعار موجود في البريف (موديول 4) — استخدمه كـ seed/fixture للتطوير قبل ما الـ backend يجهز.
+
+### 4) `home` — الرئيسية (شاشة 8)
+- **الشاشات:** الرئيسية (هيدر + بلوكات: الطلب الحالي، كارت الولاء المختصر، بانرات، الأقسام، طلبك السابق، العروض، الأكثر طلباً، جديدنا).
+- **UseCases:** `GetHomeFeed` (بيجمّع البلوكات)، `GetActiveOrder`, `GetLoyaltySummary`.
+- **Bloc:** `HomeBloc`. بيعتمد على `menu`, `orders`(active), `wallet`(summary) — فبيتبني بعدهم أو بـ stubs الأول.
+- **ملاحظة:** الطلب الحالي أول حاجة تظهر دايماً. مفيش عنوان/رسوم/وقت توصيل في الرئيسية.
+
+### 5) `search` — البحث (شاشة 9)
+- **الشاشات:** البحث (عمليات سابقة، الأكثر بحثاً، نتائج حية من حرفين، مفيش نتائج، offline على الكاش).
+- **UseCase:** `SearchMenu` (نفس بتاع menu)، `GetRecentSearches`/`SaveRecentSearch` (Hive). **Cubit:** `SearchCubit` (debounce).
+
+### 6) `offers` — العروض (شاشة 14)
+- **الشاشات:** العروض (أكواد خصم، وجبات، أصناف بخصم). **UseCase:** `GetOffers`, `GetPromoCodes`. **Cubit:** `OffersCubit`.
+
+### 7) `cart` — السلة (شاشة 15)
+- **الشاشات:** السلة (أصناف، إضافات لوجبتك، كود خصم، رصيد، ملخص، حد أدنى، فاضية).
+- **Entities:** `Cart`, `CartLine`, `PriceSummary` (المجموع/الخصم/التوصيل/الرصيد/الإجمالي + النقاط). 
+- **UseCases:** `AddToCart`, `UpdateCartLine`, `RemoveCartLine`, `ClearCart`, `ApplyPromoCode`, `ToggleBalanceUse`, `GetCartSummary`.
+- **Bloc:** `CartBloc` **عام فوق التطبيق** (بيعيش طول الجلسة، بيتحفظ في Hive). ده أهم bloc مشترك.
+- **حساب حرج:** الأرقام لازم تطلع مظبوطة (مثال البريف: مجموع 445، خصم 50، توصيل 25، رصيد 17 → 403 ج.م). **عداد السلة بيعدّ القطع مش الأصناف** (قرار DECISIONS). النقاط على المجموع قبل أي خصم ومن غير التوصيل.
+
+### 8) `address` — العناوين (شاشات 7 + 27)
+- **الشاشات:** فورم العنوان (منطقة/وصف/GPS/تفاصيل اختيارية)، اختيار المنطقة (sheet)، شرح إذن الموقع، عناويني (قائمة + تعديل/حذف، الحد 5).
+- **Entities:** `Address`, `DeliveryZone`, `DistanceTier`. 
+- **UseCases:** `GetAddresses`, `SaveAddress`, `DeleteAddress`, `SetDefaultAddress`, `GetDeliveryZones`, `ResolveCurrentLocation`, `CalcDeliveryFee` (بالمنطقة أو بالمسافة GPS، وحالة "برا النطاق" = نقدي بس من غير رسوم ظاهرة).
+- **Bloc:** `AddressBloc`. يعتمد على صلاحيات الموقع (`geolocator`/`permission_handler`).
+
+### 9) `checkout` — إتمام الطلب (شاشات 16–17)
+- **الشاشات:** إتمام الطلب (توصيل/استلام، العنوان، الوقت، التواصل، طريقة الدفع، ملاحظات، ملخص)، Sheet وقت التوصيل (فترات نص ساعة، اليوم/بكرة).
+- **Entities:** `CheckoutDraft`, `TimeSlot`, `PaymentMethod` enum (cash/vodafone/instapay). 
+- **UseCases:** `GetTimeSlots`, `PlaceOrder` (بيرجّع `Order` + رقمه)، `ValidateCheckout`.
+- **Bloc:** `CheckoutBloc`. يعتمد على `cart` + `address` + `AppConfig`.
+
+### 10) `payment` — التحويل ورفع الإيصال (شاشات 18 + 21 + تأكيد 19)
+- **الشاشات:** التحويل ورفع الإيصال، رفض الإيصال (نفس الشاشة + سبب + رفع جديد)، تأكيد الطلب (لحظة الختم، 4 حالات + حركة).
+- **Entities:** `Receipt`, `TransferDetails`, `OrderConfirmation`. 
+- **UseCases:** `UploadReceipt` (صورة واحدة، 3 محاولات)، `GetTransferDetails`, `ConvertToCash`.
+- **Bloc:** `PaymentBloc`. **تخزين:** رفع الصورة للـ Storage بتاع الـ backend مع ضغط (`image_picker` + ضغط). حجز الطلب ساعة (قيمة أدمن)، والحجز بيتمد لو الرفع شغال.
+
+### 11) `orders` — الطلبات والتتبع والتقييم (شاشات 20, 22–24)
+- **الشاشات:** التتبع (مراحل + وقت متوقع، من غير خريطة)، طلباتي (حالية/سابقة)، تفاصيل الطلب (فاتورة)، التقييم (sheet، تفريع التقييم السيء للواتساب).
+- **Entities:** `Order` (status, stages, eta, items, summary, payment, refund), `OrderRating`. 
+- **UseCases:** `GetOrders`, `GetOrderDetails`, `TrackOrder` (polling/realtime), `CancelOrder`, `ReorderOrder`, `SubmitRating`.
+- **Bloc:** `OrdersBloc` + `OrderTrackingBloc` (تحديث دوري/realtime). قواعد الإلغاء من DECISIONS (مسموح/بالاتصال حسب الحالة). الاسترداد كاش من الفرع خلال 24 ساعة.
+
+### 12) `wallet` — المحفظة والولاء (شاشة 25)
+- **الشاشات:** المحفظة (كارت الولاء الكامل، المستويات، "كيف يعمل؟"، السجل بالشهر).
+- **Entities:** `Wallet` (points, balance, tier, progress, expiry), `WalletTransaction`, `LoyaltyTier`. 
+- **UseCases:** `GetWallet`, `GetWalletHistory` (pagination). **Bloc:** `WalletBloc`. كل القيم (نسب/حدود/صلاحية) من `AppConfig`.
+
+### 13) `account` — الحساب والإعدادات (شاشات 26, 29–30)
+- **الشاشات:** حسابي (تاب)، الإعدادات (+ حذف الحساب 3 خطوات)، تغيير كلمة المرور. + المفضلة (شاشة 28).
+- **UseCases:** `UpdateProfile`, `ChangePassword`, `DeleteAccount`, `GetSettings`/`UpdateSettings`, `GetFavorites`/`ToggleFavorite`.
+- **Blocs:** `ProfileCubit`, `SettingsCubit`, `FavoritesCubit`.
+
+### 14) `support` — المساعدة وعن المطعم (شاشات 31–32)
+- **الشاشات:** المساعدة (اتصال/واتساب/أسئلة شائعة)، عن المطعم (مواعيد، عنوان، سوشيال، مناطق التوصيل).
+- **UseCases:** `GetFaqs`, `GetRestaurantInfo` (من `AppConfig`). **Cubit:** بسيط. تفريعات واتساب برسائل جاهزة.
+
+### 15) `notifications` — الإشعارات (شاشة 10)
+- **الشاشات:** الإشعارات (مقسّمة باليوم، أنواع متعددة، فاضي للزائر/الحساب)، Sheet إذن الإشعارات.
+- **Entities:** `AppNotification`. **UseCases:** `GetNotifications`, `MarkAllRead`, `RegisterPushToken`. **Bloc:** `NotificationsBloc` + تكامل FCM (foreground/background/deep link).
+
+### 16) الحالات العامة (شاشة 33) — ضمن `core`
+- Force update، تحديث اختياري، صيانة، offline عام، خطأ غير متوقع، انتهاء الجلسة. دي interceptors/guards عامة + شاشات قليلة، بتتعمل في الآخر كـ polish وبتتربط بالـ `AppConfig` والـ `AuthBloc`.
+
+---
+
+## خطة المراحل (ملخص للتتبع)
+
+| المرحلة | المحتوى | الاعتماد |
+|---|---|---|
+| 0 | تجهيز المشروع | — |
+| 1 | Design System + core | 0 |
+| 2 | onboarding + auth | 1 |
+| 3 | menu + home + search + offers | 1, (auth) |
+| 4 | cart | menu |
+| 5 | address | auth |
+| 6 | checkout | cart, address |
+| 7 | payment | checkout |
+| 8 | orders | payment |
+| 9 | wallet | orders |
+| 10 | account + support + favorites | auth |
+| 11 | notifications + الحالات العامة + polish | الكل |
+
+> بعد كل فيتشر: راجع جدول الحالات بتاعه (في البريف)، شغّل `dart analyze`، واكتب الـ tests. عندك skill `flutter-code-review` بيعمل مراجعة قبل ما تقفل التاسك.
+
+---
+
+## نقطة البداية الفعلية
+
+1. تردّ على **قرار الـ backend** (`00_overview.md` قسم 6).
+2. نعمل المرحلة 0 + 1 (ده شغل مش معتمد على الـ backend خالص، نقدر نبدأه على طول).
+3. بعدها auth بالتوازي مع تثبيت الـ backend.
+
+قوللي الـ backend، ونبدأ المرحلة 0 سوا — أعمل scaffold للمشروع كامل وأبدأ معاك فيتشر فيتشر.

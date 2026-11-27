@@ -1,0 +1,193 @@
+# Hika — الـ Design System (جاهز للـ Flutter)
+
+> كل القيم دي مأخوذة من الـ Design Brief حرفياً. اللون الأساسي النهائي **#8E1B25** (معتمد في DECISIONS). التطبيق فيه light + dark. القاعدة الحاكمة: **ممنوع أي لون/مسافة/زاوية برا الـ Tokens دي.**
+>
+> التصميم بيسلّم `tokens.json` جوه فولدر التسليم — استخدمه كمصدر الحقيقة، والملف ده بيوريك إزاي تترجمه لـ `core/theme/`.
+
+---
+
+## 1. الألوان (Light)
+
+```dart
+// core/theme/app_colors.dart  — الوضع الفاتح
+class HikaLight {
+  // Brand
+  static const primary       = Color(0xFF8E1B25); // الزرار الأساسي، التاب النشط
+  static const primaryPressed = Color(0xFF74161E);
+  static const primaryDeep   = Color(0xFF5C1118); // نص أحمر على خلفية فاتحة
+  static const primaryTint   = Color(0xFFF7E9EA); // Chip مختارة، تمييز خفيف
+  // Positive (المكسب للعميل بس: خصم، رصيد، توصيل مجاني، نجاح)
+  static const positive      = Color(0xFF2E7D4F);
+  static const positiveDeep  = Color(0xFF1F4D36);
+  static const positiveTint  = Color(0xFFE9F2EC);
+  // Neutrals
+  static const background    = Color(0xFFFAF6F0);
+  static const surface       = Color(0xFFFFFFFF);
+  static const surfaceMuted  = Color(0xFFF3EDE5);
+  static const border        = Color(0xFFE8E0D6);
+  static const borderStrong  = Color(0xFFCFC4B8);
+  static const textPrimary   = Color(0xFF2B2523);
+  static const textSecondary = Color(0xFF6B5F58);
+  static const textDisabled  = Color(0xFFA69B92);
+  static const onPrimary     = Color(0xFFFFFFFF);
+  // Status (النص/الأيقونة على خلفية فاتحة)
+  static const successFg = Color(0xFF1F4D36); static const successBg = Color(0xFFE9F2EC);
+  static const infoFg    = Color(0xFF1A5FD0); static const infoBg    = Color(0xFFE8F0FE);
+  static const warningFg = Color(0xFF8A4B00); static const warningIcon = Color(0xFFE08A00); static const warningBg = Color(0xFFFFF1DC);
+  static const errorFg   = Color(0xFFC4161C); static const errorBg   = Color(0xFFFDECEC);
+  static const star      = Color(0xFFF2A900);
+  // Tiers (النص / الخلفية)
+  static const bronzeFg = Color(0xFF8C5A3C); static const bronzeBg = Color(0xFFF5E8DF);
+  static const silverFg = Color(0xFF5F6670); static const silverBg = Color(0xFFEDEEF0);
+  static const goldFg   = Color(0xFF7F5700); static const goldBg   = Color(0xFFFFF4D6); static const goldBar = Color(0xFFF2A900);
+  // scrim = textPrimary بشفافية 50%
+  static Color scrim() => textPrimary.withOpacity(0.5);
+}
+```
+
+## 2. الألوان (Dark)
+
+```dart
+class HikaDark {
+  static const background    = Color(0xFF1B1615);
+  static const surface       = Color(0xFF241E1C);
+  static const surfaceMuted  = Color(0xFF2E2724);
+  static const border        = Color(0xFF3A322E);
+  static const textPrimary   = Color(0xFFF3ECE6);
+  static const textSecondary = Color(0xFFB9ABA1);
+  static const primary       = Color(0xFFE06A72);
+  static const primaryTint   = Color(0xFF3A2022);
+  static const positive      = Color(0xFF8FD0AA);
+  static const positiveTint  = Color(0xFF1E2E25);
+  // باقي الحالات والمستويات: ولّد نسخ داكنة بنفس المعاني ونفس تباين 4.5:1.
+}
+```
+
+> **قاعدة المعنى (مش اللون):** الأخضر = مكسب للعميل بس. الأزرق = انتظار بس (مراجعة دفع، طلب مجدول). أي معنى لازم يبان بأيقونة + نص، مش باللون لوحده. الاستثناء الوحيد: حالة "مفتوح الآن" خضرا رغم إنها حالة تشغيل.
+
+---
+
+## 3. الخطوط (Typography)
+
+- **Baloo Bhaijaan 2** للعناوين والبانرات بس (سطرين بحد أقصى). **Readex Pro** لكل حاجة تانية.
+- حمّلهم كـ assets في `pubspec.yaml` (أو `google_fonts`).
+
+| اسم الـ style | الخط | الحجم/الوزن/ارتفاع السطر | الاستخدام |
+|---|---|---|---|
+| display | Baloo | 32 / 700 / 40 | أرقام كبيرة (المبلغ، الوقت المتوقع) |
+| h1 | Baloo | 24 / 700 / 32 | عناوين الشاشات |
+| h2 | Baloo | 20 / 700 / 28 | عناوين البلوكات |
+| h3 | Readex | 17 / 600 / 26 | اسم الصنف |
+| title | Readex | 16 / 600 / 24 | عناوين الصفوف |
+| body | Readex | 15 / 400 / 24 | النص الأساسي |
+| bodyStrong | Readex | 15 / 500 / 24 | |
+| label | Readex | 14 / 500 / 20 | labels الخانات |
+| caption | Readex | 13 / 400 / 20 | تفاصيل ثانوية |
+| micro | Readex | 12 / 500 / 16 | Badges بس |
+| price | Readex | 16 / 700 / 24 | الأسعار |
+| priceLarge | Readex | 20 / 700 / 28 | الإجمالي |
+
+- التصميم لازم يستحمل تكبير الخط 130%. اسم الصنف سطرين بحد أقصى، والوصف سطر.
+- الأرقام إنجليزي دايماً، "220 ج.م" بمسافة non-breaking قبل "ج.م". الوقت 12 ساعة: "9:30 م"، و"1:00 ص".
+
+```dart
+// core/theme/app_typography.dart (نموذج)
+class HikaText {
+  static const display    = TextStyle(fontFamily: 'Baloo',  fontSize: 32, fontWeight: FontWeight.w700, height: 40/32);
+  static const h1         = TextStyle(fontFamily: 'Baloo',  fontSize: 24, fontWeight: FontWeight.w700, height: 32/24);
+  static const body       = TextStyle(fontFamily: 'Readex', fontSize: 15, fontWeight: FontWeight.w400, height: 24/15);
+  static const price      = TextStyle(fontFamily: 'Readex', fontSize: 16, fontWeight: FontWeight.w700, height: 24/16);
+  // ... باقي السلم
+}
+```
+
+---
+
+## 4. المسافات والتخطيط (Spacing)
+
+مضاعفات الـ 4:
+
+```dart
+class Gap { static const xs=4.0, sm=8.0, md=12.0, lg=16.0, xl=24.0, xxl=32.0, xxxl=48.0; }
+```
+
+- عرض التصميم 375، يشتغل من 360 لـ 430. هامش الشاشة 16.
+- الـ Carousels بتبدأ من الهامش وبتخرج من الناحية التانية (كارتين وتلت ظاهرين).
+- أقل مساحة لمس 48×48، وبين أي عنصرين 8 على الأقل.
+- شريط التنقل 64 + Safe area. الأزرار الثابتة تحت: مساحة 72 + Safe area وفوقها خط border.
+
+## 5. الزوايا (Radii)
+
+```dart
+class R { static const sm=8.0, md=12.0, lg=20.0; static const full=999.0; }
+```
+sm: Badges · md: خانات/Chips/كروت · lg: بانرات/كارت الولاء/Bottom sheets · full: أزرار/صور الأقسام/الختم.
+
+## 6. الظلال (Shadows)
+
+أغلب التصميم Flat بخط border. الظلال محسوبة بس في:
+- `elevation.1` = `0 4 16` بشفافية 12% — الهيدر وهو بيتمرر.
+- `elevation.2` = `0 -4 24` بشفافية 16% — الـ Sheets والـ Dialogs.
+
+## 7. الحركة (Motion)
+
+```dart
+class Motion {
+  static const fast   = Duration(milliseconds: 120); // الضغط
+  static const base   = Duration(milliseconds: 200); // Chip, Toggle, تغيير السعر
+  static const slowIn = Duration(milliseconds: 300); // دخول الـ Sheets
+  static const slowOut= Duration(milliseconds: 200);
+  static const moment = Duration(milliseconds: 450); // spring خفيف: الختم، الصنف الطاير للسلة
+}
+```
+- الضغط بيصغّر العنصر لـ 97%. Skeleton بشكل المحتوى ولمعة كل 1.2 ثانية. نقطة التتبع بتنبض كل 1.6 ثانية.
+- "تقليل الحركة" شغال → Fade بس (اقرأ `MediaQuery.disableAnimations`).
+
+---
+
+## 8. المكونات المشتركة (core/widgets)
+
+دي اللي بتتبني مرة وتتكرر في كل الشاشات. ابنيها في فيتشر الـ core/design-system **الأول** (المرحلة 1) قبل أي شاشة. كل مكون بكل حالاته:
+
+**الأزرار:** `HikaButton` (primary 52/44, secondary outline, text, danger, icon 40/لمس 48)، مع حالات: عادي، متداس (97%)، loading (spinner مكان النص والعرض ثابت)، disabled (+ سطر السبب). ونسخة بسعر: "إضافة إلى السلة · 220 ج.م".
+
+**الخانات:** `HikaTextField` (ارتفاع 52، label فوق دايماً، حالات: عادي/نشط/غلط+رسالة/مقفول)، `HikaPasswordField` (زرار عين)، `HikaMultilineField` (عداد حروف)، `HikaDropdownField`، `HikaSearchField` (48، full، أيقونة في البداية). الموبايل/الإيميل/المحفظة LTR جوه الخانة.
+
+**الاختيارات:** `SizeChips`, `AddonRow` (checkbox + سعر), `PaymentMethodCard` (radio), `QtyStepper` (− 1 +, والـ − تبقى سلة لما الكمية 1)، `DeliveryPickupSegmented`, `BalanceSwitch`, `TimeSlotGrid`, `StarRating` (بتتملي من اليمين).
+
+**كروت الأصناف:** `ItemCardVertical` (156, صورة 1:1)، `ItemCardHorizontal` (صورة 96)، `ComboCard` (280, 16:9)، `CartItemCard` (صورة 64). القلب في ركن الصورة الفوقاني، و Badge واحد بالأولوية (خصم ← الأكثر طلباً ← جديد).
+
+**التنقل:** `HikaBottomNav` (64, 5 تابات، النشط Fill + primaryTint، عداد السلة, نقطة طلباتي)، `HikaAppBar` (56)، `MenuTabs`، `CategoryCircle` (64)، `HikaBottomSheet` (مقبض 36×4، أقصى ارتفاع 90%، زرار ثابت تحت).
+
+**الحالات (أهم مجموعة — بتتكرر في كل شاشة):** `SkeletonBox` (لكل نوع كارت)، `OfflineBar` (شريط رفيع فوق المحتوى)، `OfflineFullScreen`، `InlineErrorBlock`، `ErrorFullScreen`، `EmptyState` (رسمة + عنوان + سطر + زرار)، `PullToRefresh`. اعملهم كـ API موحّد يشتغل مع `ViewStatus`.
+
+**التنبيهات:** `HikaBadge`, `InlineAlert` (4 حالات: نجاح/معلومة/تحذير/خطأ)، `HikaSnackbar` (فوق الـ bottom nav أو الزرار الثابت، نسخ: نجاح+"عرض السلة" / تراجع / خطأ)، `HikaDialog` (للي مالوش رجوع بس).
+
+**الدفع:** `CopyField` (نسخ + "اتنسخ" ثانيتين)، `AmountCard`، `ReceiptUpload` (حالات: فاضي/بيترفع+نسبة/اترفع+صح/وقف/أكبر من المسموح).
+
+**الولاء:** `LoyaltyCard` (نسختين: مختصرة/كاملة، وكل الحالات: برونزي/فضي/ذهبي/أعلى مستوى/تحت الحد/أول مرة/زائر/تحميل)، `TierBadge`, `FreeDeliveryBar`, `OrderTrackLine` (دواير 32: خلصت positive+صح / الحالية primary تنبض / الجاية border).
+
+---
+
+## 9. ختم هيكا (العنصر المميز)
+
+- `HikaStamp` widget. بيظهر في **3 لحظات بس**: (1) جوه كارت الولاء ثابت، (2) تأكيد الطلب (بينزل من 130%→100% بلفة خفيفة + رقم الطلب جواه، اهتزاز نجاح)، (3) تم التوصيل (أخضر + الرصيد المضاف).
+- ممنوع يظهر في أي مكان تاني. اللوجو العادي (Splash/الترحيب) **مش** ختم.
+- اعمله من الـ SVG بتاع اللوجو (حلقتين) — سلّمه التصميم كـ vector. استخدم `flutter_svg`، ونسخة متحركة بـ `AnimatedBuilder` أو Rive لو حبيت. وفّر نسخة "تقليل الحركة" (fade).
+
+---
+
+## 10. الأيقونات والرسومات والصور
+
+- **الأيقونات:** كلها SVG من تصميم هيكا (ممنوع مكتبات جاهزة)، بأسماء `ic_home` / `ic_home_fill`… نسختين Regular و Fill. حطها في `assets/icons/` واعمل `HikaIcons` class بالمسارات. الأيقونات ذات الاتجاه بتتعكس في RTL (سهم الرجوع يمين، "عرض الكل" شمال؛ الساعة/البحث/السلة ماتتعكسش).
+- **الرسومات:** SVG بستايل واحد (سلة فاضية، مفيش طلبات، مفيش نت، خطأ سيرفر، صيانة… إلخ) في `assets/illustrations/`.
+- **الصور:** مش بتتولّد. `cached_network_image` مع:
+  - Placeholder للصنف اللي مالوش صورة: مساحة `surfaceMuted` بالمقاس الصح + اسم الصنف + أيقونة صغيرة.
+  - حالات: بتحمّل (shimmer)، فشلت.
+  - القص حسب المكان: كارت 1:1، تفاصيل 4:3، سلة 64، بانرات 16:9، دواير أقسام. الصور خلفيتها بيضا — اعرضها بحيث ماتبانش مربعات بيضا لازقة على الخلفية الدافية.
+
+---
+
+## 11. أول خطوة عملية
+
+في المرحلة 1، حوّل `tokens.json` لملفات `core/theme/` فوق، وابني كل المكونات المشتركة في "معرض" (شاشة `DesignGalleryPage` في dev بس) بكل حالاتها — ده بيخليك تبني الشاشات بعد كده تركيب بلوكات جاهزة، وبيضمن إن المكون متسق قبل ما يتكرر 33 مرة.

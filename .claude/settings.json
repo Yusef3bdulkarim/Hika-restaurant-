@@ -1,0 +1,26 @@
+{
+  "disableClaudeAiConnectors": true,
+  "permissions": {
+    "allow": [
+      "Bash(dart analyze*)",
+      "Bash(dart format*)",
+      "Bash(flutter test*)",
+      "Bash(flutter pub get)",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git show*)"
+    ],
+    "ask": [
+      "Bash(git add*)",
+      "Bash(git commit*)",
+      "Bash(git push*)",
+      "Bash(git merge*)",
+      "Bash(git rebase*)",
+      "Bash(git reset*)",
+      "Bash(git checkout*)",
+      "Bash(git switch*)",
+      "Bash(flutter pub add*)"
+    ]
+  }
+}

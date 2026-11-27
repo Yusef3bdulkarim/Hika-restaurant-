@@ -1,0 +1,159 @@
+# Hika — المعمارية (Architecture)
+
+> المبدأ: **Clean Architecture + Bloc**، feature-first. كل فيتشر مستقل بطبقاته التلاتة (data / domain / presentation)، والـ `core` بيشيل اللي مشترك. الاختيار ده بيخلي الفيتشرز تتبني واحد ورا التاني من غير ما يدوسوا على بعض، وبيعزل الـ backend في مكان واحد.
+
+---
+
+## 1. الطبقات
+
+```
+Presentation (UI + Bloc)  →  Domain (Entities + UseCases + Repo interfaces)  →  Data (Models + DataSources + Repo impl)
+         ▲                              (مستقل تماماً، مفيش Flutter ولا backend)              │
+         └──────────────────────── الاعتماد بيروح لجوه بس (Dependency Rule) ─────────────────┘
+```
+
+- **Domain:** قلب الأعمال. Entities (freezed)، UseCases (كلاس واحد لكل فعل، بياخد input ويرجّع `Either<Failure, T>`)، و abstract repositories. **مفيش فيه أي حاجة من Flutter ولا Dio ولا الـ backend.**
+- **Data:** بينفّذ الـ repositories. Models (DTOs فيها `fromJson/toJson`)، و DataSources (`remote` بتكلم الـ backend، و `local` بتكلم الكاش). هنا بس الـ backend معروف.
+- **Presentation:** الشاشات والـ Blocs. الـ Bloc بينادي UseCase، وبيحوّل النتيجة لـ states، والـ UI بيرسم حسب الـ state.
+
+> **الفايدة العملية لك:** لما نثبّت الـ backend (Firebase/Supabase/API)، اللي بيتكتب أو بيتغير هو `data/datasources` بس. الـ domain والـ UI اللي هتبنيهم دلوقتي مش هيتلمسوا.
+
+---
+
+## 2. هيكل الفولدرات
+
+```
+lib/
+├── main_dev.dart            # entrypoint + flavor dev
+├── main_prod.dart           # entrypoint + flavor prod
+├── app.dart                 # MaterialApp.router + theme + localization
+│
+├── core/
+│   ├── config/              # AppConfig (env, flavor, base url, feature flags)
+│   ├── constants/           # ثوابت (keys, durations, limits الافتراضية)
+│   ├── theme/               # الـ Design System → ThemeData (شوف 02)
+│   │   ├── app_colors.dart
+│   │   ├── app_typography.dart
+│   │   ├── app_spacing.dart
+│   │   ├── app_radii.dart
+│   │   ├── app_shadows.dart
+│   │   ├── app_motion.dart
+│   │   └── app_theme.dart
+│   ├── router/              # go_router + الـ routes + الـ guards (زائر/مسجّل)
+│   ├── di/                  # get_it + injectable (service locator)
+│   ├── network/             # Dio client + interceptors (auth, logging, errors) + NetworkInfo
+│   ├── error/               # Failures + Exceptions + mapper
+│   ├── usecase/             # UseCase<Type, Params> base + NoParams
+│   ├── storage/             # Hive boxes + secure storage wrappers
+│   ├── utils/               # formatters (currency, time 12h، أرقام إنجليزي) + validators + extensions
+│   └── widgets/             # المكونات المشتركة (شوف 02 قسم المكونات)
+│
+├── features/
+│   └── <feature>/
+│       ├── data/
+│       │   ├── datasources/     # <feature>_remote_data_source.dart / _local_
+│       │   ├── models/          # DTOs (freezed + json)
+│       │   └── repositories/    # <feature>_repository_impl.dart
+│       ├── domain/
+│       │   ├── entities/
+│       │   ├── repositories/    # abstract
+│       │   └── usecases/
+│       └── presentation/
+│           ├── bloc/            # bloc أو cubit + state + event
+│           ├── pages/           # الشاشات
+│           └── widgets/         # ويدجتس خاصة بالفيتشر
+│
+└── l10n/                     # intl: app_ar.arb (+ app_en.arb فاضي للمستقبل)
+```
+
+> الـ skill بتاعك `flutter-feature` بيعمل scaffold للهيكل ده (feature / bloc / usecase / repository / tests). استخدمه في بداية كل فيتشر عشان توفر الـ boilerplate.
+
+---
+
+## 3. إدارة الحالة (Bloc / Cubit)
+
+- **Cubit** للحالات البسيطة (toggle، form فيه خطوة، صفحة ثابتة): المفضلة، الإعدادات، عن المطعم.
+- **Bloc** للحالات اللي فيها events كتير ومنطق: المنيو، السلة، الدفع، التتبع.
+- كل state بـ **freezed** بالحالات اللي في التصميم: `initial / loading / loaded / refreshing / empty / offline / error`. ده مش اختيار — دي نفس "قاعدة الحالات" اللي في البريف، فالـ state machine لكل شاشة لازم يغطّيها كلها.
+- أمثلة Blocs أساسية: `AuthBloc` (جلسة الدخول عامة فوق التطبيق)، `CartBloc` (عامة، بتعيش طول التطبيق)، `AppConfigCubit` (قيم الأدمن)، `ConnectivityCubit` (النت)، وبعدين bloc محلي لكل شاشة.
+
+### الحالات المشتركة (أساس كل شاشة)
+اعمل `enum ViewStatus { initial, loading, success, refreshing, empty, offlineCached, offlineEmpty, error }` أو sealed states بـ freezed، واستخدمها متسقة في كل الفيتشرز. ده بيخلي ويدجتس الحالات (Skeleton / Empty / Offline / Error) قابلة لإعادة الاستخدام.
+
+---
+
+## 4. التعامل مع الـ Backend (Network + Offline)
+
+### Networking
+- `Dio` واحد في الـ core، وعليه interceptors:
+  - **AuthInterceptor:** بيحط التوكن، وبيعمل refresh أو logout لو 401 (الجلسة انتهت → رجوع للرئيسية كزائر).
+  - **ErrorInterceptor:** بيحوّل أخطاء الشبكة/السيرفر لـ `Exception` نظيفة، وبعدين الـ repository بيحوّلها لـ `Failure`. **ممنوع أي كود خطأ تقني يوصل للـ UI** (قاعدة من البريف).
+  - **LoggingInterceptor** (في dev بس).
+- لو الاختيار Firebase/Supabase: الـ SDK بتاعهم بياخد مكان Dio في الـ `remote_data_source`، بنفس الـ interface بالظبط.
+
+### Offline & Cache (مهم — التصميم معتمد عليه)
+التصميم فيه حالات offline كتير (المنيو المحفوظ، "آخر نسخة محفوظة"، السلة بتتحفظ محلياً). فالكاش مش رفاهية:
+- **Hive** لتخزين: المنيو (الأصناف والأقسام)، آخر `AppConfig`، السلة، العناوين، آخر حالة طلب معروفة.
+- **ConnectivityCubit** (`connectivity_plus`) بيراقب النت، والشاشات بتسمعه عشان تبدّل بين `offlineCached` و `offlineEmpty`.
+- قاعدة: أي شاشة بتعرض بيانات لازم يبقى عندها مصدرين — remote (أونلاين) و local (كاش) — والـ repository بيقرر: جرّب remote، ولو وقع ورجّع من الكاش مع flag إن ده كاش.
+
+### الـ Failures (core/error)
+```dart
+sealed class Failure { final String messageKey; }
+class ServerFailure   // خطأ من السيرفر → "تعذّر التحميل، نعمل على حل المشكلة"
+class NetworkFailure  // مفيش نت → شاشة/شريط الأوفلاين
+class CacheFailure    // مفيش بيانات محفوظة
+class ValidationFailure(Map<field, messageKey>) // أخطاء الفورم لكل خانة
+class AuthFailure     // بيانات دخول غلط، محاولات كتير، جلسة انتهت
+class RateLimitFailure(Duration retryAfter) // 5 محاولات، إعادة إرسال اللينك
+```
+كل `messageKey` بيروح لملف النصوص الفصحى، مايتكتبش نص في الكود.
+
+---
+
+## 5. الـ Routing (go_router)
+
+- Routes مسمّاة لكل شاشة من الـ 33، مجمّعة بالفيتشر.
+- **Redirects / guards:**
+  - أول فتح → Splash → (أول مرة؟ Welcome : Home).
+  - فعل محتاج حساب والمستخدم زائر → `GuestLoginSheet` (bottom sheet) بالرسالة المناسبة (5 نسخ في البريف).
+  - جلسة انتهت → Home كزائر + Snackbar.
+  - من إشعار (deep link) → الشاشة اللي الإشعار بيشاور عليها.
+- الـ bottom nav (5 تابات: الرئيسية، القائمة، السلة، طلباتي، حسابي) بـ `StatefulShellRoute` عشان كل تاب يحتفظ بالـ stack بتاعه.
+- شاشات بزرار ثابت تحت (تفاصيل الصنف، إتمام الطلب، التحويل) **من غير** bottom nav — دي routes برا الـ shell.
+
+---
+
+## 6. الـ Localization
+
+- `intl` + ARB. ملف النصوص اللي سلّمه التصميم (key بالإنجليزي ← نص فصحى) بيتحوّل لـ `app_ar.arb`.
+- `app_en.arb` بيتعمل فاضي من دلوقتي عشان إضافة الإنجليزي بعدين تبقى سطر في ملف مش refactor.
+- الـ formatters (العملة "ج.م" بمسافة non-breaking، الوقت 12 ساعة "9:30 م"، الأرقام إنجليزي دايماً) في `core/utils`، مش في النصوص.
+- RTL هو الافتراضي (`Directionality.rtl`)، واستخدم `start/end` مش `left/right` في كل مكان.
+
+---
+
+## 7. الـ Dependency Injection
+
+- `get_it` + `injectable`. كل DataSource / Repository / UseCase / Bloc متسجّل بـ annotation.
+- Blocs العامة (`AuthBloc`, `CartBloc`, `AppConfigCubit`, `ConnectivityCubit`) singletons فوق التطبيق في `MultiBlocProvider`.
+- Blocs الشاشات `factory` بتتعمل مع الصفحة وتتقفل معاها.
+
+---
+
+## 8. الاختبارات (اختياري لكن مفضّل بالتوازي)
+
+- **Unit:** UseCases و Repositories (الـ domain سهل يتست لأنه نظيف).
+- **Bloc tests:** `bloc_test` لكل حالة في جدول الحالات.
+- **Widget tests:** المكونات المشتركة والشاشات الحرجة (السلة، الدفع).
+- عندك skills جاهزة: `dart-add-unit-test`, `dart-generate-test-mocks`, `flutter-add-widget-test`, `flutter-add-integration-test`.
+
+---
+
+## 9. ثوابت معمارية ثابتة (قواعد ماتتكسرش)
+
+1. الـ UI مابيكلمش DataSource مباشرة، بيعدّي على Bloc → UseCase → Repository.
+2. النصوص كلها من ملف النصوص (keys)، ولا نص مكتوب في ويدجت.
+3. الألوان/المسافات/الزوايا من الـ theme tokens بس، ولا قيمة hard-coded (نفس قاعدة البريف: ممنوع لون برا الـ Tokens).
+4. كل شاشة بتغطّي حالاتها من جدول الحالات بتاعها، مش الحالة الأساسية بس.
+5. قيم الأدمن من `AppConfig`، مش ثوابت في الكود.
