@@ -4,14 +4,14 @@ _Last updated: 2026-11-27_
 
 ## Now
 - **Epic:** E0 — `foundation`
-- **Sub-feature:** 02 `core_contracts` — plan `docs/plan/foundation/02-core_contracts.md`
-- **Branch:** `feat/core-contracts`
-- **Current task:** 02 `@code-reviewer` PASS WITH NITS — nits 1,3,5,6 fixed; waiting: user commit + PR to `develop`
-- Done: 01 `project_setup` merged to `develop` (PR #1) 2026-11-27
+- **Sub-feature:** 03 `firebase_setup` — plan `docs/plan/foundation/03-firebase_setup.md`
+- **Branch:** `feat/firebase-setup` (user creates from `develop`)
+- **Current task:** 03-01 FlutterFire config per flavor (shared — user runs commands)
+- Done: 01 + 02 merged to `develop` (PR #1, #2) 2026-11-27
 
 ## Next
-- `@code-reviewer` + PR `feat/core-contracts` → `develop`
-- Then plan `03-firebase_setup`
+- 03-02 init by flavor → 03-03 mapper → review + PR
+- Then plan `04-backend_scaffold`
 
 ## Open decisions
 - Discovery: Telegram cost decision + iOS-later confirmation still marked pending in `00-discovery-notes.md`
@@ -39,4 +39,4 @@ _Last updated: 2026-11-27_
 - 2026-11-27 · foundation 02-03 DI container — `core/di/injection.dart`, `kotlin.incremental=false`
 
 ## Starter message for a new chat
-> كمّل من docs/progress.md — التاسك الجاية: @code-reviewer على feat/core-contracts ثم PR، وبعدها plan 03-firebase_setup.
+> كمّل من docs/progress.md — التاسك الجاية: foundation 03-01 FlutterFire config (docs/plan/foundation/03-firebase_setup.md).
