@@ -1,0 +1,33 @@
+{
+  "name": "hika-functions",
+  "private": true,
+  "type": "module",
+  "main": "lib/index.js",
+  "engines": {
+    "node": "24"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "eslint .",
+    "test:rules": "firebase emulators:exec --only firestore,storage \"node scripts/vitest.mjs run test/rules\""
+  },
+  "dependencies": {
+    "firebase-admin": "^14.5.1",
+    "firebase-functions": "^7.4.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@firebase/rules-unit-testing": "^6.0.0",
+    "@types/node": "^24.19.4",
+    "eslint": "^10.16.0",
+    "firebase": "^13.4.0",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.74.0",
+    "vitest": "^5.1.2"
+  },
+  "overrides": {
+    "@firebase/firestore": {
+      "@grpc/grpc-js": "^1.14.7"
+    }
+  }
+}

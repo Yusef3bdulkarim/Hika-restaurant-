@@ -1,0 +1,10 @@
+rules_version = '2';
+
+// Deny-all baseline. Receipt uploads are opened in E7 with Rules tests.
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

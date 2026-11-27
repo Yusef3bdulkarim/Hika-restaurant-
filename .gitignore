@@ -49,3 +49,7 @@ app.*.map.json
 
 # Personal editor settings
 .vscode/
+
+# Firebase CLI / emulators
+.firebase/
+*-debug.log
