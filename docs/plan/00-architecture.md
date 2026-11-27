@@ -40,7 +40,7 @@ lib/
 │   ├── config/        # Flavor, env (--dart-define)
 │   ├── di/            # get_it registration (manual, per feature module)
 │   ├── error/         # Failure (sealed), exception → Failure mappers
-│   ├── result/        # ApiResult<T> (sealed: Success / Error)
+│   ├── result/        # ApiResult<T> (sealed: ApiSuccess / ApiFailure)
 │   ├── usecase/       # UseCase<T, P> base
 │   ├── router/        # go_router, routes, guards (guest/session/deep link)
 │   ├── theme/         # tokens → ThemeData (colors, type, spacing, radii, shadows, motion)
@@ -66,7 +66,7 @@ firestore.rules · storage.rules · firebase.json · firestore.indexes.json
 - Models: hand-written `fromJson/fromFirestore` + `toJson`; **fail loudly** on missing required fields (no `?? ''`).
 - `FirebaseException` / `FirebaseAuthException` / `FirebaseFunctionsException` are caught in the data layer and mapped to a sealed `Failure`:
   `ServerFailure · NetworkFailure · CacheFailure · ValidationFailure(fieldKeys) · AuthFailure(reason) · RateLimitFailure(retryAfter) · PermissionFailure · NotFoundFailure`.
-- Repositories return `ApiResult<T>` (or `Stream<ApiResult<T>>`); presentation maps `Failure` → l10n message key. No technical codes reach the UI.
+- Repositories return `ApiResult<T>` (or `Stream<ApiResult<T>>`); presentation maps `Failure` → l10n message key. `Failure` carries no message (typed only); unknown errors → `ServerFailure`. No technical codes reach the UI.
 
 ## 5. Backend (Firebase)
 - **Auth:** email/password, Google, Apple. Login lock (10 attempts → 5 min) and reset-link limits (60 s, 5/h) enforced server-side.

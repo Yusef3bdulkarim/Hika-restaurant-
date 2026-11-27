@@ -37,6 +37,9 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.20.3
+  equatable: ^3.0.0
+  shared_preferences: ^2.5.6
+  get_it: ^9.3.0
 
 dev_dependencies:
   flutter_test:
@@ -48,6 +51,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
+  mocktail: ^1.0.5
+  shared_preferences_platform_interface: ^2.4.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
