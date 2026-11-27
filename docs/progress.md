@@ -6,7 +6,7 @@ _Last updated: 2026-11-27_
 - **Epic:** E0 — `foundation`
 - **Sub-feature:** 02 `core_contracts` — plan `docs/plan/foundation/02-core_contracts.md`
 - **Branch:** `feat/core-contracts`
-- **Current task:** 02 tasks all done — next: commit 02-03, `@code-reviewer` (sonnet), PR to `develop`
+- **Current task:** 02 `@code-reviewer` PASS WITH NITS — nits 1,3,5,6 fixed; waiting: user commit + PR to `develop`
 - Done: 01 `project_setup` merged to `develop` (PR #1) 2026-11-27
 
 ## Next
@@ -17,6 +17,7 @@ _Last updated: 2026-11-27_
 - Discovery: Telegram cost decision + iOS-later confirmation still marked pending in `00-discovery-notes.md`
 
 ## Known issues
+- `ApiSuccess` / `ApiFailure` have no value equality — add `Equatable` when the first repository test needs `expect(result, ApiSuccess(x))` (review 02)
 - Kotlin incremental compile disabled (`android/gradle.properties`) — cross-drive cache bug (project F:, pub cache C:)
 - Plain `flutter run` fails (no `lib/main.dart`) — always `--flavor dev -t lib/main_dev.dart`
 - `docs/brief/*.md.crdownload` — files have the Chrome partial-download extension

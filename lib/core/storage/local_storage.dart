@@ -4,8 +4,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../error/exceptions.dart';
 
-/// Stores JSON values by key. Throws [CacheException] on any read/write
-/// failure or corrupt stored JSON.
+/// Stores JSON values by key. Throws [CacheException] on plugin exceptions
+/// and corrupt stored JSON. Non-JSON values passed to [writeJson] throw an
+/// [Error] on purpose (programmer bug).
 class LocalStorage {
   const LocalStorage(this._prefs);
 

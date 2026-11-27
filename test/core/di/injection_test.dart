@@ -13,10 +13,13 @@ void main() {
   tearDown(() => sl.reset());
 
   group('configureDependencies', () {
-    test('should resolve LocalStorage when dependencies are configured', () {
-      configureDependencies();
+    test(
+      'should return the same LocalStorage instance when resolved twice',
+      () {
+        configureDependencies();
 
-      expect(sl<LocalStorage>(), isA<LocalStorage>());
-    });
+        expect(sl<LocalStorage>(), same(sl<LocalStorage>()));
+      },
+    );
   });
 }

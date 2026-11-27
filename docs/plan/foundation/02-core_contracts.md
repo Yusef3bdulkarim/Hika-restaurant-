@@ -33,7 +33,7 @@
 ## 03 — DI container
 - **Layer:** wiring
 - **Goal:** one `get_it` container, configured in `bootstrap()` before `runApp`.
-- **Touch:** `pubspec.yaml` (`get_it`), create `lib/core/di/injection.dart` (`final sl = GetIt.instance;` `Future<void> configureDependencies()` registering the prefs instance + `LocalStorage` as lazy singletons), `lib/bootstrap.dart` (call it); test `test/core/di/injection_test.dart`.
+- **Touch:** `pubspec.yaml` (`get_it`), create `lib/core/di/injection.dart` (`final sl = GetIt.instance;` `void configureDependencies()` (sync — nothing async yet) registering the prefs instance + `LocalStorage` as lazy singletons), `lib/bootstrap.dart` (call it); test `test/core/di/injection_test.dart`.
 - **Do NOT touch:** `lib/app.dart`; no feature registrations.
 - **Tests:** `should resolve LocalStorage when dependencies are configured` (with `sl.reset()` in `tearDown`).
 - **Done when:** analyze clean, tests pass, `flutter build apk --debug --flavor dev -t lib/main_dev.dart` succeeds.

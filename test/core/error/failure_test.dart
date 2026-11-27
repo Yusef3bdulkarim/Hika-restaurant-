@@ -3,8 +3,11 @@ import 'package:hika_app/core/error/failure.dart';
 
 void main() {
   group('Failure', () {
-    test('should be equal when two failures have same type and fields', () {
+    test('should be equal when two failures have same type', () {
       expect(const NetworkFailure(), const NetworkFailure());
+    });
+
+    test('should be equal when two failures have same type and fields', () {
       expect(
         const RateLimitFailure(retryAfter: Duration(seconds: 60)),
         const RateLimitFailure(retryAfter: Duration(seconds: 60)),
