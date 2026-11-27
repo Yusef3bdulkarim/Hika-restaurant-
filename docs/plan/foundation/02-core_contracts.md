@@ -28,7 +28,7 @@
 - **Do NOT touch:** DI (task 03); no bool/int helpers (added by the epic that needs them).
 - **Tests:** `should return decoded map when key holds valid JSON` · `should return null when key is missing` · `should throw CacheException when stored value is not valid JSON` · `should throw CacheException when plugin read fails` · `should store encoded JSON when writeJson is called` · `should throw CacheException when plugin write fails` · `should delete key when remove is called`.
 - **Done when:** analyze clean, tests pass.
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ## 03 — DI container
 - **Layer:** wiring

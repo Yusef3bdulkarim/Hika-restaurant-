@@ -6,11 +6,11 @@ _Last updated: 2026-11-27_
 - **Epic:** E0 — `foundation`
 - **Sub-feature:** 02 `core_contracts` — plan `docs/plan/foundation/02-core_contracts.md`
 - **Branch:** `feat/core-contracts`
-- **Current task:** 02-02 LocalStorage (todo) — 02-01 done, waiting for user commit
+- **Current task:** 02-03 DI container (todo) — 02-02 done, waiting for user commit
 - Done: 01 `project_setup` merged to `develop` (PR #1) 2026-11-27
 
 ## Next
-- 02-02 LocalStorage → 02-03 DI → `@code-reviewer` + PR
+- 02-03 DI → `@code-reviewer` + PR
 - Then plan `03-firebase_setup`
 
 ## Open decisions
@@ -33,6 +33,7 @@ _Last updated: 2026-11-27_
 - 2026-11-27 · foundation 01-03 Android flavors + package id — `com.hika.app` / `.dev`
 - 2026-11-27 · foundation 01-04 l10n + RTL — `l10n.yaml`, `app_ar.arb`, forced `ar` locale
 - 2026-11-27 · foundation 02-01 ApiResult + Failure + UseCase — `core/result`, `core/error`, `core/usecase`
+- 2026-11-27 · foundation 02-02 LocalStorage — `core/storage`, `CacheException`
 
 ## Starter message for a new chat
-> كمّل من docs/progress.md — التاسك الجاية: foundation 02-02 LocalStorage (docs/plan/foundation/02-core_contracts.md).
+> كمّل من docs/progress.md — التاسك الجاية: foundation 02-03 DI container (docs/plan/foundation/02-core_contracts.md).
