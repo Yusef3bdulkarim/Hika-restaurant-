@@ -20,15 +20,15 @@
 - **Commands (from repo root):**
   - `flutterfire configure --project=hika-dev-3fb2e --platforms=android --android-package-name=com.hika.app.dev --out=lib/core/firebase/firebase_options_dev.dart --android-out=android/app/src/dev/google-services.json --yes`
   - `flutterfire configure --project=hika-279b8 --platforms=android --android-package-name=com.hika.app --out=lib/core/firebase/firebase_options_prod.dart --android-out=android/app/src/prod/google-services.json --yes`
-- **Touch (generated / edited by the CLI):** the two options files, two `google-services.json`, `android/settings.gradle.kts`, `android/app/build.gradle.kts` (google-services plugin), `firebase.json` (FlutterFire section).
+- **Touch (generated / edited by the CLI):** the two options files, two `google-services.json`, `android/settings.gradle.kts`, `android/app/build.gradle.kts` (google-services plugin), `firebase.json` (FlutterFire section); `firebase_core` added here (generated files import it); Google Services plugin bumped 4.3.15 → 4.6.0.
 - **Do NOT touch:** `ios/`, `lib/bootstrap.dart` (task 02).
 - **Done when:** files exist with the right project ids; `flutter build apk --debug --flavor dev -t lib/main_dev.dart` and `--flavor prod -t lib/main_prod.dart` succeed. All committed (breakdown decision 2).
-- **Model:** Sonnet · **Status:** todo
+- **Model:** Sonnet · **Status:** done
 
 ## 02 — Initialize Firebase by flavor
 - **Layer:** wiring
 - **Goal:** `bootstrap()` initializes Firebase with the options of the running flavor before DI and `runApp`.
-- **Touch:** `pubspec.yaml` (`firebase_core` via `flutter pub add`), create `lib/core/firebase/firebase_options.dart` (`FirebaseOptions firebaseOptionsFor(Flavor flavor)` — exhaustive `switch`), `lib/bootstrap.dart` (`await Firebase.initializeApp(options: firebaseOptionsFor(flavor))`); test `test/core/firebase/firebase_options_test.dart`.
+- **Touch:** (`firebase_core` already added in 01) create `lib/core/firebase/firebase_options.dart` (`FirebaseOptions firebaseOptionsFor(Flavor flavor)` — exhaustive `switch`), `lib/bootstrap.dart` (`await Firebase.initializeApp(options: firebaseOptionsFor(flavor))`); test `test/core/firebase/firebase_options_test.dart`.
 - **Do NOT touch:** generated options files, DI registrations.
 - **Tests:** `should return dev project options when flavor is dev` · `should return prod project options when flavor is prod` (compare `projectId`).
 - **Done when:** analyze clean, tests pass; both flavors run on a device with no Firebase init error (manual).

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "168960226009",
+    "project_id": "hika-dev-3fb2e",
+    "storage_bucket": "hika-dev-3fb2e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:168960226009:android:0df62f0054a1ce230704c8",
+        "android_client_info": {
+          "package_name": "com.hika.app.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXCPomLL6KtS1r_w2FMd4ml8WAedxsF5o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
