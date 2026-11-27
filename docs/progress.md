@@ -6,7 +6,7 @@ _Last updated: 2026-11-27_
 - **Epic:** E0 — `foundation`
 - **Sub-feature:** 01 `project_setup` — plan `docs/plan/foundation/01-project_setup.md`
 - **Branch:** `feat/project-setup` (user creates from `develop`)
-- **Current task:** 01-01 Strict lints (todo)
+- **Current task:** 01-02 Flavor + entrypoints (todo) — 01-01 done, waiting for user commit
 - Done: roadmap + E0 breakdown approved; `hika-dev` created; tools installed (2026-11-27)
 
 ## Next
@@ -27,7 +27,7 @@ _Last updated: 2026-11-27_
 | Git | 1 | |
 
 ## Done log
-- (none)
+- 2026-11-27 · foundation 01-01 Strict lints — `analysis_options.yaml`
 
 ## Starter message for a new chat
-> كمّل من docs/progress.md — التاسك الجاية: foundation 01-01 Strict lints (docs/plan/foundation/01-project_setup.md).
+> كمّل من docs/progress.md — التاسك الجاية: foundation 01-02 Flavor + entrypoints (docs/plan/foundation/01-project_setup.md).

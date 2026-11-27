@@ -16,7 +16,7 @@
 - **Do NOT touch:** `pubspec.yaml` (no new lint package)
 - **Content:** `analyzer.language`: `strict-casts`, `strict-inference`, `strict-raw-types`; exclude `lib/core/l10n/generated/**`. Rules (only those not already in `flutter_lints`): `prefer_single_quotes`, `prefer_final_locals`, `prefer_final_in_for_each`, `always_declare_return_types`, `avoid_dynamic_calls`, `unawaited_futures`, `directives_ordering`, `prefer_const_constructors`, `prefer_const_declarations`, `avoid_redundant_argument_values`, `use_super_parameters`, `require_trailing_commas` only if it does not fight `dart format`.
 - **Done when:** `dart analyze` clean (fix the demo code or leave it for task 02 if it is deleted there).
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ## 02 — Flavor + entrypoints
 - **Layer:** wiring
