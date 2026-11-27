@@ -4,14 +4,14 @@ _Last updated: 2026-11-28_
 
 ## Now
 - **Epic:** E0 — `foundation`
-- **Sub-feature:** 03 `firebase_setup` — plan `docs/plan/foundation/03-firebase_setup.md`
-- **Branch:** `feat/firebase-setup`
-- **Current task:** 03 done — review PASS WITH NITS (fixed); PR open → waiting: user manual check (both flavors start, no Firebase error) + merge
-- Done: 01 + 02 merged to `develop` (PR #1, #2) 2026-11-27
+- **Sub-feature:** 04 `backend_scaffold` — plan `docs/plan/foundation/04-backend_scaffold.md`
+- **Branch:** `feat/backend-scaffold`
+- **Current task:** 04-03 Rules test harness (todo) — 04-01 + 04-02 done, waiting for user commits
+- Done: 01, 02, 03 merged to `develop` (PR #1-#3)
 
 ## Next
-- User: manual check + merge PR `feat/firebase-setup` → `develop`
-- Then plan `04-backend_scaffold` (Functions TS + Emulator Suite + deny-all Rules; Opus review)
+- 04-01 config + deny-all Rules → 04-02 Functions TS → 04-03 Rules tests → `@code-reviewer` (opus) + PR
+- Then plan `05-router` (last E0 sub-feature)
 
 ## Open decisions
 - Discovery: Telegram cost decision + iOS-later confirmation still marked pending in `00-discovery-notes.md`
@@ -19,6 +19,7 @@ _Last updated: 2026-11-28_
 ## Known issues
 - `ApiSuccess` / `ApiFailure` have no value equality — add `Equatable` when the first repository test needs `expect(result, ApiSuccess(x))` (review 02)
 - iOS: Firebase options not generated — `firebaseOptionsFor` throws `UnsupportedError` on iOS; run `flutterfire configure --platforms=ios` per flavor before any iOS build
+- Emulators need Java 21+ — JDK 25 (Temurin) installed, first on PATH; Flutter still uses Android Studio JBR 21
 - Kotlin incremental compile disabled (`android/gradle.properties`) — cross-drive cache bug (project F:, pub cache C:)
 - Plain `flutter run` fails (no `lib/main.dart`) — always `--flavor dev -t lib/main_dev.dart`
 - `docs/brief/*.md.crdownload` — files have the Chrome partial-download extension
@@ -41,6 +42,8 @@ _Last updated: 2026-11-28_
 - 2026-11-27 · foundation 03-01 FlutterFire config — options + google-services per flavor, `firebase_core`
 - 2026-11-27 · foundation 03-02 Firebase init by flavor — `firebaseOptionsFor`, `bootstrap`
 - 2026-11-28 · foundation 03-03 Firebase exception mapper — `mapFirebaseException`
+- 2026-11-28 · foundation 04-01 Firebase config + deny-all Rules — `.firebaserc`, `firebase.json`, rules
+- 2026-11-28 · foundation 04-02 Functions TS package — Node 24, TS ~6.0.3 (typescript-eslint limit), ESLint flat
 
 ## Starter message for a new chat
-> كمّل من docs/progress.md — التاسك الجاية: لو PR feat/firebase-setup اتعمله merge، plan foundation 04-backend_scaffold (docs/plan/foundation/00-breakdown.md).
+> كمّل من docs/progress.md — التاسك الجاية: foundation 04-03 Rules test harness (docs/plan/foundation/04-backend_scaffold.md).

@@ -27,7 +27,7 @@
 - **Touch:** create `functions/package.json` (`engines.node: "24"`, `main: lib/index.js`; deps `firebase-functions`, `firebase-admin`; dev `typescript`, `eslint`, `typescript-eslint`; scripts `build`, `lint`), `functions/tsconfig.json` (`strict: true`, `outDir: lib`), `functions/eslint.config.mjs`, `functions/src/index.ts` (initializes Admin SDK only — no functions), `functions/.gitignore` (`lib/`, `node_modules/`); root `.gitignore` gets Firebase debug logs (`*-debug.log`, `.firebase/`).
 - **Do NOT touch:** rules files, `lib/` (Flutter).
 - **Done when:** `npm run build` and `npm run lint` clean; `firebase emulators:start --only functions` loads the package with 0 functions and no error.
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ## 03 — Rules test harness (deny-all tests)
 - **Layer:** tests (backend)
