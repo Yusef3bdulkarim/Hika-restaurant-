@@ -5,8 +5,8 @@ _Last updated: 2026-11-27_
 ## Now
 - **Epic:** E0 — `foundation`
 - **Sub-feature:** 01 `project_setup` — plan `docs/plan/foundation/01-project_setup.md`
-- **Branch:** `feat/project-setup` (user creates from `develop`)
-- **Current task:** 01-02 Flavor + entrypoints (todo) — 01-01 done, waiting for user commit
+- **Branch:** `feat/project-setup`
+- **Current task:** 01-03 Android flavors + package id (todo) — 01-02 done, waiting for user commit
 - Done: roadmap + E0 breakdown approved; `hika-dev` created; tools installed (2026-11-27)
 
 ## Next
@@ -28,6 +28,7 @@ _Last updated: 2026-11-27_
 
 ## Done log
 - 2026-11-27 · foundation 01-01 Strict lints — `analysis_options.yaml`
+- 2026-11-27 · foundation 01-02 Flavor + entrypoints — `bootstrap.dart`, `main_dev/prod.dart`, `app.dart`
 
 ## Starter message for a new chat
-> كمّل من docs/progress.md — التاسك الجاية: foundation 01-02 Flavor + entrypoints (docs/plan/foundation/01-project_setup.md).
+> كمّل من docs/progress.md — التاسك الجاية: foundation 01-03 Android flavors + package id (docs/plan/foundation/01-project_setup.md).

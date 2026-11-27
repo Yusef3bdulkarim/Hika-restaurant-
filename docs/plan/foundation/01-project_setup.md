@@ -24,7 +24,7 @@
 - **Touch:** create `lib/core/config/flavor.dart` (`enum Flavor { dev, prod }`), `lib/bootstrap.dart` (`Future<void> bootstrap(Flavor flavor)`: `WidgetsFlutterBinding.ensureInitialized()` → `runApp(App(flavor: flavor))`), `lib/main_dev.dart`, `lib/main_prod.dart`, `lib/app.dart` (minimal `MaterialApp`, placeholder `Scaffold`); delete `lib/main.dart`, `test/widget_test.dart` (counter demo).
 - **Do NOT touch:** `android/`, `pubspec.yaml`
 - **Done when:** analyze clean; `flutter run -t lib/main_dev.dart` shows the placeholder (before flavors exist, without `--flavor`).
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ## 03 — Android flavors + package id
 - **Layer:** wiring
