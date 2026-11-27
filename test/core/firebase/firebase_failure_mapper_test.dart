@@ -8,49 +8,24 @@ FirebaseException exceptionWith(String code) =>
 
 void main() {
   group('mapFirebaseException', () {
-    test('should return NetworkFailure when code is a network error', () {
-      for (final code in [
-        'unavailable',
-        'network-request-failed',
-        'deadline-exceeded',
-      ]) {
-        expect(
-          mapFirebaseException(exceptionWith(code)),
-          const NetworkFailure(),
-          reason: code,
-        );
-      }
-    });
+    const expected = <String, Failure>{
+      'unavailable': NetworkFailure(),
+      'network-request-failed': NetworkFailure(),
+      'deadline-exceeded': NetworkFailure(),
+      'permission-denied': PermissionFailure(),
+      'not-found': NotFoundFailure(),
+      'resource-exhausted': RateLimitFailure(),
+      'too-many-requests': RateLimitFailure(),
+      // Until E3 adds AuthFailure, these fall back to ServerFailure on purpose.
+      'unauthenticated': ServerFailure(),
+      'wrong-password': ServerFailure(),
+      'internal': ServerFailure(),
+    };
 
-    test('should return PermissionFailure when code is permission-denied', () {
-      expect(
-        mapFirebaseException(exceptionWith('permission-denied')),
-        const PermissionFailure(),
-      );
-    });
-
-    test('should return NotFoundFailure when code is not-found', () {
-      expect(
-        mapFirebaseException(exceptionWith('not-found')),
-        const NotFoundFailure(),
-      );
-    });
-
-    test('should return RateLimitFailure when code is a rate-limit error', () {
-      for (final code in ['resource-exhausted', 'too-many-requests']) {
-        expect(
-          mapFirebaseException(exceptionWith(code)),
-          const RateLimitFailure(),
-          reason: code,
-        );
-      }
-    });
-
-    test('should return ServerFailure when code is unknown', () {
-      expect(
-        mapFirebaseException(exceptionWith('internal')),
-        const ServerFailure(),
-      );
-    });
+    for (final MapEntry(key: code, value: failure) in expected.entries) {
+      test('should return ${failure.runtimeType} when code is $code', () {
+        expect(mapFirebaseException(exceptionWith(code)), failure);
+      });
+    }
   });
 }

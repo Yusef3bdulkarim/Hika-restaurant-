@@ -23,7 +23,7 @@
 1. Confirm the class hierarchy before relying on it.
 2. Group codes by what the **user** should see (offline / not allowed / missing / slow down / generic).
 3. Default everything else to `ServerFailure` — never throw from the mapper.
-4. One test per group; multi-code groups loop with `reason` so a failure names the code.
+4. Table-driven tests: one `test()` per code.
 
 ## Files
 - `lib/core/firebase/firebase_failure_mapper.dart` — the mapping.
@@ -35,8 +35,8 @@
 - **Total function** — every input has an output (wildcard `_`), so the mapper itself can't crash.
 
 ## Tests
-- One per group (network, permission, not-found, rate-limit) + unknown code → `ServerFailure`.
-- Loops inside a test check one behavior (one group) with several inputs; `reason` shows which code failed.
+- One generated `test()` per code (10 tests) from a code → expected `Failure` table — a wrong code is named in the failing test (changed after review: loops inside one test hid later failures).
+- `unauthenticated` and `wrong-password` pinned to `ServerFailure` — E3 must change these tests on purpose when it adds `AuthFailure`.
 - Not tested: real SDK exceptions — the mapper only reads `code`, which `FirebaseException(plugin:, code:)` reproduces exactly.
 
 ## Quiz
