@@ -6,7 +6,7 @@ _Last updated: 2026-11-27_
 - **Epic:** E0 — `foundation`
 - **Sub-feature:** 01 `project_setup` — plan `docs/plan/foundation/01-project_setup.md`
 - **Branch:** `feat/project-setup`
-- **Current task:** 01 tasks all done — next: `@code-reviewer` (sonnet) on `git diff develop...HEAD`, user manual check, PR to `develop`
+- **Current task:** 01 `@code-reviewer` PASS WITH NITS (no fixes needed) — waiting: user manual check + PR to `develop`
 - Done: roadmap + E0 breakdown approved; `hika-dev` created; tools installed (2026-11-27)
 
 ## Next
@@ -17,6 +17,7 @@ _Last updated: 2026-11-27_
 - Discovery: Telegram cost decision + iOS-later confirmation still marked pending in `00-discovery-notes.md`
 
 ## Known issues
+- Plain `flutter run` fails (no `lib/main.dart`) — always `--flavor dev -t lib/main_dev.dart`
 - `docs/brief/*.md.crdownload` — files have the Chrome partial-download extension
 
 ## Learning stages
