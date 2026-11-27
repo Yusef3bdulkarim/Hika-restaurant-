@@ -27,7 +27,7 @@
 
 ## Files
 - `lib/core/firebase/firebase_failure_mapper.dart` — the mapping.
-- `test/core/firebase/firebase_failure_mapper_test.dart` — 5 tests.
+- `test/core/firebase/firebase_failure_mapper_test.dart` — 10 table-driven tests.
 
 ## Principles & patterns
 - **Error boundary** — technical errors stop at the data layer; only `Failure` types go up.
