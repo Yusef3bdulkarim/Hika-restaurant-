@@ -6,7 +6,7 @@ _Last updated: 2026-11-28_
 - **Epic:** E0 — `foundation`
 - **Sub-feature:** 04 `backend_scaffold` — plan `docs/plan/foundation/04-backend_scaffold.md`
 - **Branch:** `feat/backend-scaffold`
-- **Current task:** 04 tasks done — waiting: user commit 04-03, then `@code-reviewer` (opus) + PR
+- **Current task:** 04 done — opus review PASS WITH NITS (all 5 fixed); waiting: user commit + PR to `develop`
 - Done: 01, 02, 03 merged to `develop` (PR #1-#3)
 
 ## Next
@@ -46,7 +46,7 @@ _Last updated: 2026-11-28_
 - 2026-11-28 · foundation 03-03 Firebase exception mapper — `mapFirebaseException`
 - 2026-11-28 · foundation 04-01 Firebase config + deny-all Rules — `.firebaserc`, `firebase.json`, rules
 - 2026-11-28 · foundation 04-02 Functions TS package — Node 24, TS ~6.0.3 (typescript-eslint limit), ESLint flat
-- 2026-11-28 · foundation 04-03 Rules test harness — Vitest + rules-unit-testing, 5 deny-all tests, grpc-js override
+- 2026-11-28 · foundation 04-03 Rules test harness — Vitest + rules-unit-testing, 9 deny-all tests, grpc-js override
 
 ## Starter message for a new chat
 > كمّل من docs/progress.md — التاسك الجاية: @code-reviewer (opus) على feat/backend-scaffold ثم PR، وبعدها plan foundation 05-router.

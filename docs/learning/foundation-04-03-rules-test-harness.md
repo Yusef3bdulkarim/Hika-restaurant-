@@ -29,7 +29,7 @@
 
 ## Files
 - `functions/test/rules/test-env.ts` — creates the test environment from `firestore.rules` / `storage.rules`.
-- `functions/test/rules/firestore.rules.test.ts` (3) / `storage.rules.test.ts` (2).
+- `functions/test/rules/firestore.rules.test.ts` (5) / `storage.rules.test.ts` (4).
 - `functions/vitest.config.ts` — node env, sequential files, timeout.
 - `functions/scripts/vitest.mjs` — Windows drive-letter workaround.
 - `functions/tsconfig.json` / `tsconfig.build.json` — split configs.
@@ -41,8 +41,9 @@
 - **Fix supply-chain findings, don't ignore them** — even for dev-only deps.
 
 ## Tests
-- Firestore: deny read unauthenticated · deny read authenticated · deny write authenticated.
-- Storage: deny upload authenticated · deny read unauthenticated.
+- Firestore: deny read unauthenticated · deny read authenticated · deny write authenticated · deny write unauthenticated · deny list authenticated.
+- Storage: deny upload authenticated · deny read unauthenticated · deny upload unauthenticated · deny read authenticated.
+- Review (opus) added the opposite-auth-state cases — when rules start allowing paths, bugs hide in the auth state nobody tested. 9 tests total.
 - Run: `cd functions && npm run test:rules` (needs Java 21+).
 
 ## Quiz
