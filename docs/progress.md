@@ -3,16 +3,18 @@
 _Last updated: 2026-11-27_
 
 ## Now
-- **Epic:** Level 0 — Project discovery
-- **Sub-feature:** —
-- **Branch:** `main` (repo initialized, first commit + `develop` pending — user)
-- **Current task:** Discovery Q&A — in progress (answers saved in `docs/plan/00-discovery-notes.md`)
+- **Epic:** E0 — `foundation`
+- **Sub-feature:** 01 `project_setup` — plan `docs/plan/foundation/01-project_setup.md`
+- **Branch:** `feat/project-setup` (user creates from `develop`)
+- **Current task:** 01-01 Strict lints (todo)
+- Done: roadmap + E0 breakdown approved; `hika-dev` created; tools installed (2026-11-27)
 
 ## Next
-- Finish Q&A → write `docs/plan/00-project-overview.md` → user approves → `00-architecture.md` → `00-roadmap.md`
+- Tasks 01-01 → 01-04 (Sonnet), then `@code-reviewer` + PR
+- Then plan `02-core_contracts` — user proposes `ApiResult` / `Failure` design first
 
 ## Open decisions
-- Discovery batch 2 pending (see `docs/plan/00-discovery-notes.md`)
+- Discovery: Telegram cost decision + iOS-later confirmation still marked pending in `00-discovery-notes.md`
 
 ## Known issues
 - `docs/brief/*.md.crdownload` — files have the Chrome partial-download extension
@@ -28,4 +30,4 @@ _Last updated: 2026-11-27_
 - (none)
 
 ## Starter message for a new chat
-> كمّل Level 0 discovery من docs/progress.md و docs/plan/00-discovery-notes.md.
+> كمّل من docs/progress.md — التاسك الجاية: foundation 01-01 Strict lints (docs/plan/foundation/01-project_setup.md).

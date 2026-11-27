@@ -41,5 +41,31 @@ Q&A log while reading `docs/brief/`. Answers are saved here as they come, then t
 - **Deadline:** none.
 - **Git:** init with `main` + `develop`.
 
-### Batch 3
-- (pending)
+### Batch 3 (2026-11-27)
+- **Design source:** everything is in Claude Design. Claude can read it directly via the Artifact tool:
+  - Design (all 33 screens + states + components + decisions): https://claude.ai/artifact/PR7RkSdSmEE3Q23nHSnuCa
+    - key files: `project/HO-00-Decisions`, `HO-00-States`, `HO-00-Index`, `M1-*` (design system), `M2..M8-*` (screens)
+  - Hika Design Brief: https://claude.ai/artifact/5r57f78WCjmTF5DtTxXXkU
+  - Design System: https://claude.ai/artifact/RpnAnwJ7L7PW7dpdgCu8nH
+  - Also: Hika Admin Settings, هيكا Prototype, Hika Home Screen, Hika App: Design Spec
+  - Pull per feature when needed into `docs/brief/design/` (don't load everything at once).
+- **Staff alerts:** asked about cost — answered (Telegram ≈ free). Decision pending.
+- **Admin panel:** completely separate project.
+- **Platform:** work on Windows → assumption: Android first; iOS later (needs Mac or cloud CI). To confirm.
+- **Stores:** Play + App Store accounts available.
+
+### Batch 4 (2026-11-27)
+- **Staff alerts:** Telegram bot (Cloud Function → staff group). Set a Blaze budget alert.
+- **Platform:** Android first; iOS later via Mac or cloud CI.
+- **Data:** test/seed data for menu, zones, fees, payment numbers until the restaurant sends real data.
+- **Firebase project:** created by user, name `Hika`.
+### Batch 5 (overview review, 2026-11-27)
+- **Auth:** add Google Sign-In + Sign in with Apple (user said "google play, app store" → interpreted as Google/Apple sign-in, email+password kept). Not in Design artifact.
+- Points rounding: round down to whole pound (13.35 → 13 ج.م = 260 points).
+- Telegram events: all suggested, incl. sold-out + daily summary.
+- Session sheet title → «تسجيل الدخول مطلوب».
+- Welcome direction → ج · تايبوجرافي, text 1.
+- Google/Apple sign-in UI → Claude builds it from tokens (no new design).
+- Telegram events: user asked what else can be added → suggestions sent, awaiting confirmation.
+
+- Read `HO-00-Decisions` (saved in `docs/brief/design/project/`) → business rules folded into the overview.
