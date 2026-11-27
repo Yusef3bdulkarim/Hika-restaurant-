@@ -37,7 +37,7 @@
 - **Do NOT touch:** `lib/app.dart`; no feature registrations.
 - **Tests:** `should resolve LocalStorage when dependencies are configured` (with `sl.reset()` in `tearDown`).
 - **Done when:** analyze clean, tests pass, `flutter build apk --debug --flavor dev -t lib/main_dev.dart` succeeds.
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ---
 
