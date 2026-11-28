@@ -26,7 +26,7 @@
 - **Touch:** `lib/app.dart` (remove inline placeholder), `test/app_test.dart` (existing title + RTL tests keep passing; add `should start on placeholder page when app starts`).
 - **Do NOT touch:** `bootstrap.dart`, router files from 01 (unless a bug is found).
 - **Done when:** analyze clean, all tests pass, `flutter build apk --debug --flavor dev -t lib/main_dev.dart` succeeds.
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ---
 
