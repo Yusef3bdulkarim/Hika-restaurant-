@@ -22,7 +22,7 @@
 - **Do NOT touch:** `app.dart`, any widget.
 - **Tests:** none (no logic). Checked in task 06: gallery shows both families.
 - **Done when:** analyze clean, existing tests pass, `flutter build apk --debug --flavor dev -t lib/main_dev.dart` succeeds.
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ## 02 — Colors
 - **Layer:** presentation (core)
@@ -37,7 +37,7 @@
 - **Do NOT touch:** `ThemeData` (task 05).
 - **Tests:** `should replace only the given color when copyWith is called` · `should return this when lerp other is not HikaColors` · `should return other colors when lerp t is 1`.
 - **Done when:** analyze clean, tests pass, values match `M1-Colors` one by one.
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ## 03 — Typography
 - **Layer:** presentation (core)
@@ -46,7 +46,7 @@
 - **Do NOT touch:** `hika_colors.dart`.
 - **Tests:** `should use Baloo for display and headings when standard styles are read` · `should match M1-Type size weight and line height when standard styles are read` (table-driven, all 12) · `should replace only the given style when copyWith is called`.
 - **Done when:** analyze clean, tests pass.
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ## 04 — Spacing, radii, shadows, motion
 - **Layer:** presentation (core)
@@ -59,20 +59,20 @@
 - **Do NOT touch:** other theme files.
 - **Tests:** none (constants only, no logic).
 - **Done when:** analyze clean.
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ## 05 — ThemeData + wire into App
 - **Layer:** wiring
 - **Goal:** the app runs on our theme, and Material widgets pick up our tokens.
 - **Touch:**
-  - create `lib/core/theme/hika_theme.dart`: `HikaTheme.light()` builds a `ThemeData` with Material 3, a `ColorScheme` mapped from `HikaColors.light`, scaffold background, `fontFamily` Readex, `textTheme` mapped from `HikaTextStyles` with color `textPrimary`, and `extensions: [HikaColors.light, HikaTextStyles.standard]`.
+  - create `lib/core/theme/hika_theme.dart`: `HikaTheme.light()` builds a `ThemeData` with Material 3, a `ColorScheme` mapped from `HikaColors.light`, scaffold background, `textTheme` (color `textPrimary`) and `primaryTextTheme` (color `onPrimary`) mapped from `HikaTextStyles` in all 15 slots, and `extensions: [HikaColors.light, HikaTextStyles.standard]`.
   - create `lib/core/theme/theme_context.dart`: `BuildContext` extension exposing `colors` and `textStyles`.
   - `lib/app.dart`: `theme: HikaTheme.light()`.
   - test file: `test/core/theme/hika_theme_test.dart`.
 - **Do NOT touch:** router, `bootstrap.dart`.
 - **Tests:** `should expose HikaColors and HikaTextStyles when theme is built` · `should map primary and background into ColorScheme and scaffold when theme is built` · `should read colors from context when widget is under HikaTheme` (pump a widget).
 - **Done when:** analyze clean, all tests pass (including `app_test.dart`).
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ## 06 — Design gallery (dev only)
 - **Layer:** presentation (core) + wiring
@@ -87,9 +87,19 @@
 - **Do NOT touch:** theme files (unless a bug is found).
 - **Tests:** `should open design gallery when flavor is dev` · `should show not-found page when gallery path is opened in prod` · existing router + app tests updated to pass `flavor`.
 - **Done when:** analyze clean, all tests pass, gallery checked on device at 360 / 430 width and font scale 130 %.
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ---
+
+## Review (2026-11-28)
+- `@code-reviewer` (`sonnet`): **PASS WITH NITS**. Fixed:
+  - `primaryTextTheme` mapped, so text on primary surfaces is no longer Roboto.
+  - The theme is built once per `App`, not on every rebuild.
+  - Gallery hex values are 6 digits, same as M1-Colors.
+  - Gallery test covers 360 and 430 widths and every section.
+  - New tests: shadows ↔ `textPrimary`, `HikaTextStyles.lerp`, `ElevatedButton` label font.
+- Rejected: "set `ThemeData.fontFamily`". `ThemeData` applies it to every text slot, which would turn the Baloo headings into Readex. All slots are filled instead (`fontFamily` was dropped from the 05 text).
+- Accepted as-is: the gallery code ships in the prod binary. The route is unreachable there and the page holds no secrets.
 
 ## After all tasks
 - `@code-reviewer` (`sonnet`) on `git diff develop...feat/ds-tokens` → you check the gallery on device → PR to `develop`.

@@ -4,16 +4,15 @@ _Last updated: 2026-11-28_
 
 ## Now
 - **Epic:** E1 — `design_system`
-- **Sub-feature:** 01 `tokens` — plan `docs/plan/design_system/01-tokens.md` (waiting approval)
-- **Branch:** `feat/ds-tokens` (create from `develop` after the docs commit)
-- **Current task:** plan written; waiting: user approves plan assumptions 1-5
+- **Sub-feature:** 01 `tokens` — plan `docs/plan/design_system/01-tokens.md` (approved)
+- **Branch:** `feat/ds-tokens`
+- **Current task:** 01 tokens: all tasks done, device check OK (user, 2026-11-28); `@code-reviewer` PASS WITH NITS, nits fixed (see plan "Review") → waiting: user commit + PR to `develop`
 - E0 done: 01-05 merged to `develop` (PR #1-#6) · E1 breakdown approved
 
 ## Next
 - 01-01 fonts → 01-02 colors → 01-03 typography → 01-04 const tokens → 01-05 ThemeData + App → 01-06 gallery
 
 ## Open decisions
-- E1 01-tokens plan assumptions 1-5 (gallery English text, dev app opens on gallery until E2)
 - Discovery: Telegram cost decision + iOS-later confirmation still marked pending in `00-discovery-notes.md`
 
 ## Known issues
@@ -51,6 +50,12 @@ _Last updated: 2026-11-28_
 - 2026-11-28 · foundation 05-01 Router config — `go_router` 18, `AppRoutes`, `createRouter()`, not-found page
 - 2026-11-28 · foundation 05-02 Wire router into App — `MaterialApp.router`, router owned + disposed by `App`
 - 2026-11-28 · E0 done (PR #6 merged) · E1 design pages pulled into `docs/brief/design/project/` · E1 breakdown draft
+- 2026-11-28 · design_system 01-01 Bundle fonts — static TTFs (Baloo 700, Readex 400-700), OFL in `LicenseRegistry`
+- 2026-11-28 · design_system 01-02 Colors — `HikaColors` ThemeExtension, 34 tokens from `M1-Colors` (+ `borderInput`)
+- 2026-11-28 · design_system 01-03 Typography — `HikaTextStyles` ThemeExtension, 12 styles, no color
+- 2026-11-28 · design_system 01-04 Const tokens — `HikaSpacing`, `HikaRadii`, `HikaShadows`, `HikaMotion`
+- 2026-11-28 · design_system 01-05 ThemeData + App — full `ColorScheme`, 15 `TextTheme` slots, letterSpacing 0, `context.colors`
+- 2026-11-28 · design_system 01-06 Design gallery — dev-only route, `App(flavor:)`, token sections, overflow test 360 / 130 %
 
 ## Starter message for a new chat
-> كمّل من docs/progress.md — التاسك الجاية: موافقة plan `design_system/01-tokens.md` ثم 01-01 fonts على `feat/ds-tokens`.
+> كمّل من docs/progress.md — التاسك الجاية: @code-reviewer على feat/ds-tokens ثم PR، وبعدها plan `design_system/02-assets.md`.
