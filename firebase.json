@@ -1,0 +1,77 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "buildConfigurations": {
+          "src\\dev": {
+            "projectId": "hika-dev-3fb2e",
+            "appId": "1:168960226009:android:0df62f0054a1ce230704c8",
+            "fileOutput": "android/app/src/dev/google-services.json"
+          },
+          "src\\prod": {
+            "projectId": "hika-279b8",
+            "appId": "1:425827701928:android:dab5d1eea1292d06d41e9d",
+            "fileOutput": "android/app/src/prod/google-services.json"
+          }
+        }
+      },
+      "dart": {
+        "lib/core/firebase/firebase_options_dev.dart": {
+          "projectId": "hika-dev-3fb2e",
+          "configurations": {
+            "android": "1:168960226009:android:0df62f0054a1ce230704c8"
+          }
+        },
+        "lib/core/firebase/firebase_options_prod.dart": {
+          "projectId": "hika-279b8",
+          "configurations": {
+            "android": "1:425827701928:android:dab5d1eea1292d06d41e9d"
+          }
+        }
+      }
+    }
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "*-debug.log",
+        "*.local",
+        "test",
+        "scripts"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint",
+        "npm --prefix \"$RESOURCE_DIR\" run build"
+      ]
+    }
+  ],
+  "emulators": {
+    "auth": {
+      "port": 9099
+    },
+    "firestore": {
+      "port": 8080
+    },
+    "functions": {
+      "port": 5001
+    },
+    "storage": {
+      "port": 9199
+    },
+    "ui": {
+      "enabled": true
+    },
+    "singleProjectMode": true
+  }
+}

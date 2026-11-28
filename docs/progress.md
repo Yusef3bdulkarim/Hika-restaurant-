@@ -1,20 +1,29 @@
 # Progress
 
-_Last updated: 2026-11-27_
+_Last updated: 2026-11-28_
 
 ## Now
-- **Epic:** Level 0 — Project discovery
-- **Sub-feature:** —
-- **Branch:** `main` (repo initialized, first commit + `develop` pending — user)
-- **Current task:** Discovery Q&A — in progress (answers saved in `docs/plan/00-discovery-notes.md`)
+- **Epic:** E1 — `design_system`
+- **Sub-feature:** 03 `formatters` — plan `docs/plan/design_system/03-formatters.md` (approved)
+- **Branch:** `feat/ds-formatters` (develop merged in after PR #8)
+- **Current task:** 03 formatters: both tasks done; `@code-reviewer` PASS WITH NITS, nits fixed → PR open
+- E0 done (PR #1-#6) · E1: 01 tokens merged (PR #7), 02 assets merged (PR #8)
 
 ## Next
-- Finish Q&A → write `docs/plan/00-project-overview.md` → user approves → `00-architecture.md` → `00-roadmap.md`
+- Review + PR 03 → plan `design_system/04-buttons_inputs.md`
 
 ## Open decisions
-- Discovery batch 2 pending (see `docs/plan/00-discovery-notes.md`)
+- Discovery: Telegram cost decision + iOS-later confirmation still marked pending in `00-discovery-notes.md`
 
 ## Known issues
+- `ApiSuccess` / `ApiFailure` have no value equality — add `Equatable` when the first repository test needs `expect(result, ApiSuccess(x))` (review 02)
+- iOS: Firebase options not generated — `firebaseOptionsFor` throws `UnsupportedError` on iOS; run `flutterfire configure --platforms=ios` per flavor before any iOS build
+- Emulators need Java 21+ — JDK 25 (Temurin) installed, first on PATH; Flutter still uses Android Studio JBR 21
+- Lower-case drive path (`f:\`, how VS Code opens the folder) breaks tools: Vitest (fixed by `functions/scripts/vitest.mjs`) and `flutter pub get` sometimes deletes `lib/core/l10n/generated/*` → run `flutter gen-l10n`. Better: open the folder as `F:\work\hika\hika_app`
+- `functions/package.json` `overrides` pins `@grpc/grpc-js ^1.14.7` under `@firebase/firestore` — remove when `firebase` ships a fixed version
+- Kotlin incremental compile disabled (`android/gradle.properties`) — cross-drive cache bug (project F:, pub cache C:)
+- Plain `flutter run` fails (no `lib/main.dart`) — always `--flavor dev -t lib/main_dev.dart`
+- `NotFoundPage` has no way back home — add a "go home" action in E2 (splash/shell) or E11 (deep links)
 - `docs/brief/*.md.crdownload` — files have the Chrome partial-download extension
 
 ## Learning stages
@@ -25,7 +34,34 @@ _Last updated: 2026-11-27_
 | Git | 1 | |
 
 ## Done log
-- (none)
+- 2026-11-27 · foundation 01-01 Strict lints — `analysis_options.yaml`
+- 2026-11-27 · foundation 01-02 Flavor + entrypoints — `bootstrap.dart`, `main_dev/prod.dart`, `app.dart`
+- 2026-11-27 · foundation 01-03 Android flavors + package id — `com.hika.app` / `.dev`
+- 2026-11-27 · foundation 01-04 l10n + RTL — `l10n.yaml`, `app_ar.arb`, forced `ar` locale
+- 2026-11-27 · foundation 02-01 ApiResult + Failure + UseCase — `core/result`, `core/error`, `core/usecase`
+- 2026-11-27 · foundation 02-02 LocalStorage — `core/storage`, `CacheException`
+- 2026-11-27 · foundation 02-03 DI container — `core/di/injection.dart`, `kotlin.incremental=false`
+- 2026-11-27 · foundation 03-01 FlutterFire config — options + google-services per flavor, `firebase_core`
+- 2026-11-27 · foundation 03-02 Firebase init by flavor — `firebaseOptionsFor`, `bootstrap`
+- 2026-11-28 · foundation 03-03 Firebase exception mapper — `mapFirebaseException`
+- 2026-11-28 · foundation 04-01 Firebase config + deny-all Rules — `.firebaserc`, `firebase.json`, rules
+- 2026-11-28 · foundation 04-02 Functions TS package — Node 24, TS ~6.0.3 (typescript-eslint limit), ESLint flat
+- 2026-11-28 · foundation 04-03 Rules test harness — Vitest + rules-unit-testing, 9 deny-all tests, grpc-js override
+- 2026-11-28 · foundation 05-01 Router config — `go_router` 18, `AppRoutes`, `createRouter()`, not-found page
+- 2026-11-28 · foundation 05-02 Wire router into App — `MaterialApp.router`, router owned + disposed by `App`
+- 2026-11-28 · E0 done (PR #6 merged) · E1 design pages pulled into `docs/brief/design/project/` · E1 breakdown draft
+- 2026-11-28 · design_system 01-01 Bundle fonts — static TTFs (Baloo 700, Readex 400-700), OFL in `LicenseRegistry`
+- 2026-11-28 · design_system 01-02 Colors — `HikaColors` ThemeExtension, 34 tokens from `M1-Colors` (+ `borderInput`)
+- 2026-11-28 · design_system 01-03 Typography — `HikaTextStyles` ThemeExtension, 12 styles, no color
+- 2026-11-28 · design_system 01-04 Const tokens — `HikaSpacing`, `HikaRadii`, `HikaShadows`, `HikaMotion`
+- 2026-11-28 · design_system 01-05 ThemeData + App — full `ColorScheme`, 15 `TextTheme` slots, letterSpacing 0, `context.colors`
+- 2026-11-28 · design_system 01-06 Design gallery — dev-only route, `App(flavor:)`, token sections, overflow test 360 / 130 %
+- 2026-11-28 · design_system 02-01 Icon assets — 118 SVGs, `flutter_svg` 2.5.1, masks verified by render; icons drawn for RTL
+- 2026-11-28 · design_system 02-02 HikaIcon — enum of 59, IconTheme color, mirror in LTR, gallery section
+- 2026-11-28 · design_system 02-03 Illustrations — 15 SVGs, `HikaIllustration` (120 / 140), gallery section
+- 2026-11-28 · design_system 02-04 Logo — potrace from PNG masks, pixel diff ≤ 0.6 %, `HikaLogo`
+- 2026-11-28 · design_system 03-01 Numbers + money — `formatNumber` (`en` locale: `ar_EG` gives Arabic-Indic digits), `l10n.money()`, ARB `moneyAmount`
+- 2026-11-28 · design_system 03-02 Clock time — `formatClock`, `l10n.time()`, midnight `12 ص`, NBSP before ص/م
 
 ## Starter message for a new chat
-> كمّل Level 0 discovery من docs/progress.md و docs/plan/00-discovery-notes.md.
+> كمّل من docs/progress.md — التاسك الجاية: @code-reviewer على feat/ds-formatters ثم PR، وبعدها plan `design_system/04-buttons_inputs.md`.

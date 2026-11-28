@@ -20,6 +20,7 @@ version: 1.0.0+1
 
 environment:
   sdk: ^3.13.5
+  flutter: ">=3.47.0" # go_router 18 needs it; local toolchain = 3.47.7
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -34,6 +35,15 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.20.3
+  equatable: ^3.0.0
+  shared_preferences: ^2.5.6
+  get_it: ^9.3.0
+  firebase_core: ^5.2.0
+  go_router: ^18.1.4
+  flutter_svg: ^2.5.1
 
 dev_dependencies:
   flutter_test:
@@ -45,6 +55,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
+  mocktail: ^1.0.5
+  shared_preferences_platform_interface: ^2.4.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -55,7 +67,32 @@ flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
+  generate: true
   uses-material-design: true
+
+  assets:
+    # OFL license texts, registered with LicenseRegistry in bootstrap.dart
+    - assets/fonts/OFL-BalooBhaijaan2.txt
+    - assets/fonts/OFL-ReadexPro.txt
+    - assets/icons/
+    - assets/illustrations/
+    - assets/logo/
+
+  fonts:
+    - family: BalooBhaijaan2
+      fonts:
+        - asset: assets/fonts/BalooBhaijaan2-Bold.ttf
+          weight: 700
+    - family: ReadexPro
+      fonts:
+        - asset: assets/fonts/ReadexPro-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/ReadexPro-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/ReadexPro-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/ReadexPro-Bold.ttf
+          weight: 700
 
   # To add assets to your application, add an assets section, like this:
   # assets:

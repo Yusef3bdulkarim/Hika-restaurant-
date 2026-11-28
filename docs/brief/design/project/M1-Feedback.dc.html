@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>هيكا: التنبيهات والحالات</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@600;700&amp;family=Readex+Pro:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#5C1118}a:hover{color:#74161E}
+button{font-family:inherit;cursor:pointer}
+@keyframes hkShim{0%{background-position:100% 0}100%{background-position:-100% 0}}
+.hk-sk{background:linear-gradient(90deg,#F3EDE5 0%,#F3EDE5 35%,#FAF6F0 50%,#F3EDE5 65%,#F3EDE5 100%);background-size:200% 100%;animation:hkShim 1.2s linear infinite}
+@media (prefers-reduced-motion: reduce){.hk-sk{animation:none}}
+@keyframes hkSpin{to{transform:rotate(360deg)}}
+.hk-spin{animation:hkSpin 900ms linear infinite;transform-origin:center}
+</style>
+</helmet>
+<div style="width: 1360px; height: 2200px; box-sizing: border-box; padding: 48px; background: #FAF6F0; font-family: 'Readex Pro', system-ui, sans-serif; color: #2B2523; direction: rtl; display: flex; flex-direction: column; gap: 40px">
+
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h1 style="margin: 0; font-family: 'Baloo Bhaijaan 2', system-ui, sans-serif; font-size: 40px; font-weight: 700; line-height: 48px">التنبيهات ومكونات الحالات</h1>
+<p style="margin: 0; font-size: 15px; line-height: 24px; color: #6B5F58; text-wrap: balance">النجاح = النتيجة بس. الخطأ = اللي حصل وبعدين الحل. الانتظار = اللي بيحصل والوقت المتوقع. ومن غير علامات تعجب.</p>
+</div>
+
+<!-- Badges + inline alerts -->
+<section style="display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 32px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: 20px; font-weight: 700; line-height: 28px">الـ Badges</h2>
+<div style="background: #FFFFFF; border: 1px solid #E8E0D6; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 16px">
+<span style="display: flex; align-items: center; justify-content: space-between"><span style="height: 24px; padding: 0 8px; border-radius: 8px; background: #E9F2EC; color: #1F4D36; font-size: 12px; font-weight: 500; line-height: 16px; display: inline-flex; align-items: center">توفير 20&nbsp;ج.م</span><span style="font-size: 13px; color: #6B5F58">خصم (أولوية 1)</span></span>
+<span style="display: flex; align-items: center; justify-content: space-between"><span style="height: 24px; padding: 0 8px; border-radius: 8px; background: #F7E9EA; color: #5C1118; font-size: 12px; font-weight: 500; line-height: 16px; display: inline-flex; align-items: center">الأكثر طلباً</span><span style="font-size: 13px; color: #6B5F58">أولوية 2</span></span>
+<span style="display: flex; align-items: center; justify-content: space-between"><span style="height: 24px; padding: 0 8px; border-radius: 8px; background: #F3EDE5; color: #2B2523; font-size: 12px; font-weight: 500; line-height: 16px; display: inline-flex; align-items: center">جديد</span><span style="font-size: 13px; color: #6B5F58">أولوية 3</span></span>
+<span style="display: flex; align-items: center; justify-content: space-between"><span style="height: 24px; padding: 0 8px; border-radius: 8px; background: #2B2523; color: #FFFFFF; font-size: 12px; font-weight: 500; line-height: 16px; display: inline-flex; align-items: center">نفد اليوم</span><span style="font-size: 13px; color: #6B5F58">حالة، مش ترويج</span></span>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: 20px; font-weight: 700; line-height: 28px">تنبيه جوه الصفحة</h2>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+<div role="status" style="display: flex; gap: 12px; padding: 16px; border-radius: 12px; background: #E9F2EC; color: #1F4D36"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><circle cx="12" cy="12" r="8.5"></circle><path d="m8.5 12.3 2.4 2.4 4.6-4.9"></path></svg><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 600; line-height: 24px">تم قبول الإيصال</span><span style="font-size: 14px; line-height: 22px">جارٍ تحضير طلبك</span></span></div>
+<div role="status" style="display: flex; gap: 12px; padding: 16px; border-radius: 12px; background: #E8F0FE; color: #1A5FD0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 600; line-height: 24px">الدفع قيد المراجعة</span><span style="font-size: 14px; line-height: 22px">جارٍ مراجعة الإيصال، وتستغرق المراجعة 10 دقائق تقريباً</span></span></div>
+<div role="status" style="display: flex; gap: 12px; padding: 16px; border-radius: 12px; background: #FFF1DC; color: #8A4B00"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E08A00" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M10.7 4.8a1.5 1.5 0 0 1 2.6 0l7.4 12.9a1.5 1.5 0 0 1-1.3 2.3H4.6a1.5 1.5 0 0 1-1.3-2.3Z"></path><path d="M12 10v4"></path><circle cx="12" cy="16.9" r="0.6" fill="#E08A00"></circle></svg><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 600; line-height: 24px">الطلب متأخر قليلاً</span><span style="font-size: 14px; line-height: 22px">المطبخ مزدحم، والوقت المتوقع الآن 50 دقيقة تقريباً</span></span></div>
+<div role="alert" style="display: flex; gap: 12px; padding: 16px; border-radius: 12px; background: #FDECEC; color: #C4161C"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5v5.5"></path><circle cx="12" cy="16.3" r="0.6" fill="currentColor"></circle></svg><span style="display: flex; flex-direction: column; gap: 2px; align-items: flex-start"><span style="font-size: 15px; font-weight: 600; line-height: 24px">تم رفض الإيصال</span><span style="font-size: 14px; line-height: 22px">المبلغ في الصورة غير واضح. نحتاج صورة أخرى أوضح لإيصال التحويل</span><button style="margin-top: 4px; height: 40px; padding: 0 12px; margin-inline-start: -12px; border: 0; border-radius: 999px; background: none; color: #C4161C; font-size: 14px; font-weight: 600">رفع صورة أخرى</button></span></div>
+</div>
+</div>
+</section>
+
+<!-- Snackbars -->
+<section style="display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: 20px; font-weight: 700; line-height: 28px">Snackbar: فوق شريط التنقل أو فوق الزرار الثابت بـ 8 · بيختفي بعد 4 ثواني</h2>
+<div style="display: grid; grid-template-columns: repeat(3, 343px); gap: 32px">
+<div role="status" style="height: 56px; box-sizing: border-box; padding: 0 16px 0 4px; border-radius: 12px; background: #2B2523; box-shadow: 0 4px 16px rgba(43, 37, 35, 0.12); display: flex; align-items: center; justify-content: space-between; color: #FFFFFF"><span style="display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 500"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E9F2EC" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="m8.5 12.3 2.4 2.4 4.6-4.9"></path></svg>تمت الإضافة إلى السلة</span><button style="height: 48px; padding: 0 12px; border: 0; background: none; color: #F7E9EA; font-size: 14px; font-weight: 600">عرض السلة</button></div>
+<div role="status" style="height: 56px; box-sizing: border-box; padding: 0 16px 0 4px; border-radius: 12px; background: #2B2523; box-shadow: 0 4px 16px rgba(43, 37, 35, 0.12); display: flex; align-items: center; justify-content: space-between; color: #FFFFFF"><span style="font-size: 15px; font-weight: 500">تم حذف صاروخ فراخ من السلة</span><button style="height: 48px; padding: 0 12px; border: 0; background: none; color: #F7E9EA; font-size: 14px; font-weight: 600">تراجع</button></div>
+<div role="alert" style="min-height: 56px; box-sizing: border-box; padding: 8px 16px 8px 4px; border-radius: 12px; background: #2B2523; box-shadow: 0 4px 16px rgba(43, 37, 35, 0.12); display: flex; align-items: center; justify-content: space-between; gap: 8px; color: #FFFFFF"><span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; line-height: 20px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FDECEC" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5v5.5"></path><circle cx="12" cy="16.3" r="0.6" fill="#FDECEC"></circle></svg>لم تتم إضافة الصنف. الاتصال بالإنترنت ضعيف</span><button style="flex: none; height: 48px; padding: 0 12px; border: 0; background: none; color: #F7E9EA; font-size: 14px; font-weight: 600">إعادة المحاولة</button></div>
+</div>
+</section>
+
+<!-- Dialog + skeletons -->
+<section style="display: grid; grid-template-columns: 375px minmax(0, 1fr); gap: 40px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: 20px; font-weight: 700; line-height: 28px">Dialog: للحاجات اللي مالهاش رجوع بس</h2>
+<div style="position: relative; width: 375px; height: 420px; border-radius: 24px; overflow: hidden; background: #FAF6F0; border: 1px solid #E8E0D6">
+<div style="position: absolute; inset: 0; background: rgba(43, 37, 35, 0.5)"></div>
+<div role="alertdialog" aria-labelledby="dlgT" style="position: absolute; left: 24px; right: 24px; top: 88px; background: #FFFFFF; border-radius: 20px; padding: 24px; box-shadow: 0 -4px 24px rgba(43, 37, 35, 0.16); display: flex; flex-direction: column; gap: 8px">
+<span id="dlgT" style="font-family: 'Baloo Bhaijaan 2', system-ui, sans-serif; font-size: 20px; font-weight: 700; line-height: 28px">إلغاء الطلب رقم 1042</span>
+<span style="font-size: 15px; line-height: 24px; color: #6B5F58">لم يبدأ تحضير الطلب بعد، ولا يمكن التراجع عن الإلغاء.</span>
+<div style="margin-top: 12px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<button style="height: 48px; border: 1px solid #CFC4B8; border-radius: 999px; background: #FFFFFF; color: #2B2523; font-size: 15px; font-weight: 600">الرجوع إلى الطلب</button>
+<button style="height: 48px; border: 0; border-radius: 999px; background: #FDECEC; color: #C4161C; font-size: 15px; font-weight: 600">إلغاء الطلب</button>
+</div>
+</div>
+</div>
+<span style="font-size: 13px; line-height: 20px; color: #6B5F58">الزرارين بأسماء الفعل، والآمن هو الأول. ممنوع "نعم / لا".</span>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: 20px; font-weight: 700; line-height: 28px">Skeleton بشكل المحتوى الحقيقي · لمعة كل 1.2 ثانية</h2>
+<div style="background: #FFFFFF; border: 1px solid #E8E0D6; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 24px" aria-busy="true" aria-label="جارٍ التحميل">
+<div style="display: flex; gap: 24px; align-items: flex-start">
+<span style="width: 156px; display: flex; flex-direction: column; gap: 8px"><span class="hk-sk" style="width: 156px; height: 156px; border-radius: 12px"></span><span class="hk-sk" style="width: 120px; height: 14px; border-radius: 8px"></span><span class="hk-sk" style="width: 72px; height: 14px; border-radius: 8px"></span></span>
+<span style="flex: 1; display: flex; flex-direction: column; gap: 16px">
+<span style="display: flex; gap: 12px; padding: 12px; border: 1px solid #E8E0D6; border-radius: 12px"><span style="flex: 1; display: flex; flex-direction: column; gap: 8px; padding-top: 4px"><span class="hk-sk" style="width: 60%; height: 14px; border-radius: 8px"></span><span class="hk-sk" style="width: 90%; height: 12px; border-radius: 8px"></span><span class="hk-sk" style="width: 30%; height: 14px; border-radius: 8px; margin-top: 8px"></span></span><span class="hk-sk" style="flex: none; width: 96px; height: 96px; border-radius: 12px"></span></span>
+<span style="display: flex; gap: 12px; align-items: center"><span class="hk-sk" style="flex: none; width: 52px; height: 52px; border-radius: 999px"></span><span style="flex: 1; display: flex; flex-direction: column; gap: 8px"><span class="hk-sk" style="width: 40%; height: 14px; border-radius: 8px"></span><span class="hk-sk" style="width: 65%; height: 14px; border-radius: 8px"></span></span></span>
+</span>
+</div>
+<div style="display: flex; gap: 12px"><span style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span class="hk-sk" style="width: 64px; height: 64px; border-radius: 999px"></span><span class="hk-sk" style="width: 40px; height: 12px; border-radius: 8px"></span></span><span style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span class="hk-sk" style="width: 64px; height: 64px; border-radius: 999px"></span><span class="hk-sk" style="width: 40px; height: 12px; border-radius: 8px"></span></span><span style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span class="hk-sk" style="width: 64px; height: 64px; border-radius: 999px"></span><span class="hk-sk" style="width: 40px; height: 12px; border-radius: 8px"></span></span><span style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span class="hk-sk" style="width: 64px; height: 64px; border-radius: 999px"></span><span class="hk-sk" style="width: 40px; height: 12px; border-radius: 8px"></span></span><span class="hk-sk" style="flex: 1; height: 96px; border-radius: 20px; margin-inline-start: 16px"></span></div>
+<span style="font-size: 13px; line-height: 20px; color: #6B5F58">كارت عمودي، وكارت أفقي، وصف قايمة، ودواير الأقسام، وبانر. الـ Skeleton بنفس المقاسات والزوايا بالظبط، ولو "تقليل الحركة" شغال اللمعة بتقف.</span>
+</div>
+</div>
+</section>
+
+<!-- Offline / error / empty -->
+<section style="display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: 20px; font-weight: 700; line-height: 28px">مفيش نت، والأخطاء، والشاشة الفاضية</h2>
+<div style="display: grid; grid-template-columns: repeat(3, 375px); gap: 32px; align-items: start">
+
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 13px; color: #6B5F58">شريط "مفيش نت" الرفيع (فيه بيانات محفوظة)</span>
+<div role="status" style="height: 40px; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0 16px; background: #2B2523; color: #FFFFFF; font-size: 13px; font-weight: 500"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5a10 10 0 0 1 4-2.3M14.5 10.1A10 10 0 0 1 19 12.5M2 9a15 15 0 0 1 5-3M11 5.5A15 15 0 0 1 22 9M8.5 16a5 5 0 0 1 7 0M3.5 3.5l17 17"></path><circle cx="12" cy="19.5" r="0.8" fill="currentColor" stroke="none"></circle></svg>لا يوجد اتصال بالإنترنت. هذه آخر قائمة تم تحميلها</div>
+<div style="padding: 12px 16px; background: #FAF6F0; border: 1px solid #E8E0D6; border-top: 0; font-size: 13px; line-height: 20px; color: #6B5F58">الشاشة شغالة عادي، والأفعال اللي محتاجة نت (الإضافة إلى السلة، والطلب) بتستنى وبيظهر Snackbar خطأ لو اتداست.</div>
+<span style="margin-top: 16px; font-size: 13px; color: #6B5F58">بلوك خطأ صغير جوه الصفحة (جزء فشل)</span>
+<div style="display: flex; align-items: center; gap: 12px; padding: 16px; background: #FFFFFF; border: 1px solid #E8E0D6; border-radius: 12px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C4161C" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5v5.5"></path><circle cx="12" cy="16.3" r="0.6" fill="#C4161C"></circle></svg><span style="flex: 1; font-size: 14px; line-height: 22px">تعذّر تحميل العروض</span><button style="height: 40px; padding: 0 12px; border: 0; border-radius: 999px; background: none; color: #5C1118; font-size: 14px; font-weight: 600">إعادة المحاولة</button></div>
+<span style="margin-top: 16px; font-size: 13px; color: #6B5F58">Pull to refresh</span>
+<div style="height: 120px; background: #FAF6F0; border: 1px solid #E8E0D6; border-radius: 12px; display: flex; align-items: flex-start; justify-content: center; gap: 48px; padding-top: 16px">
+<span style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span style="width: 40px; height: 40px; border-radius: 999px; background: #FFFFFF; box-shadow: 0 4px 16px rgba(43, 37, 35, 0.12); display: flex; align-items: center; justify-content: center; color: #8E1B25"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"></path></svg></span><span style="font-size: 12px; color: #6B5F58">السحب للتحديث</span></span>
+<span style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span style="width: 40px; height: 40px; border-radius: 999px; background: #FFFFFF; box-shadow: 0 4px 16px rgba(43, 37, 35, 0.12); display: flex; align-items: center; justify-content: center; color: #8E1B25"><svg class="hk-spin" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-opacity="0.2" stroke-width="2.5"></circle><path d="M21 12a9 9 0 0 0-9-9" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"></path></svg></span><span style="font-size: 12px; color: #6B5F58">بيتحدث، والمحتوى القديم ظاهر</span></span>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 13px; color: #6B5F58">شاشة "مفيش نت" الكاملة (مفيش بيانات)</span>
+<div style="height: 560px; box-sizing: border-box; background: #FAF6F0; border: 1px solid #E8E0D6; border-radius: 24px; padding: 32px 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; text-align: center">
+<svg width="140" height="140" viewBox="0 0 160 160" aria-hidden="true"><ellipse cx="80" cy="136" rx="56" ry="8" fill="#F3EDE5"></ellipse><path d="M50 108a20 20 0 0 1 3-40 28 28 0 0 1 54-7 22 22 0 0 1 6 47Z" fill="#F7E9EA" stroke="#5C1118" stroke-width="2.5" stroke-linejoin="round"></path><path d="M64 90a22 22 0 0 1 32 0M71 98a11 11 0 0 1 18 0" fill="none" stroke="#5C1118" stroke-width="2.5" stroke-linecap="round"></path><circle cx="80" cy="104" r="2.5" fill="#5C1118"></circle><path d="M46 46l68 76" stroke="#8E1B25" stroke-width="4" stroke-linecap="round"></path></svg>
+<span style="font-family: 'Baloo Bhaijaan 2', system-ui, sans-serif; font-size: 24px; font-weight: 700; line-height: 32px">لا يوجد اتصال بالإنترنت</span>
+<span style="font-size: 15px; line-height: 24px; color: #6B5F58">تحتاج القائمة إلى اتصال بالإنترنت لتحميلها أول مرة. ستكتمل الصفحة تلقائياً عند عودة الاتصال.</span>
+<button style="margin-top: 8px; height: 48px; padding: 0 24px; border: 0; border-radius: 999px; background: #8E1B25; color: #FFFFFF; font-size: 15px; font-weight: 600">إعادة المحاولة</button>
+</div></div>
+
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 13px; color: #6B5F58">شاشة خطأ كاملة، وقالب الشاشة الفاضية</span>
+<div style="height: 268px; box-sizing: border-box; background: #FAF6F0; border: 1px solid #E8E0D6; border-radius: 24px; padding: 20px 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center">
+<svg width="88" height="88" viewBox="0 0 160 160" aria-hidden="true"><ellipse cx="80" cy="136" rx="56" ry="8" fill="#F3EDE5"></ellipse><path d="M40 130V86a40 40 0 0 1 80 0v44Z" fill="#F7E9EA" stroke="#5C1118" stroke-width="2.5" stroke-linejoin="round"></path><path d="M62 130v-22a18 18 0 0 1 36 0v22" fill="#FFFFFF" stroke="#5C1118" stroke-width="2.5"></path><path d="M30 130h100" stroke="#5C1118" stroke-width="2.5" stroke-linecap="round"></path><circle cx="68" cy="34" r="6" fill="none" stroke="#CFC4B8" stroke-width="2.5"></circle><circle cx="84" cy="24" r="8" fill="none" stroke="#CFC4B8" stroke-width="2.5"></circle><circle cx="96" cy="38" r="5" fill="none" stroke="#CFC4B8" stroke-width="2.5"></circle></svg>
+<span style="font-family: 'Baloo Bhaijaan 2', system-ui, sans-serif; font-size: 20px; font-weight: 700; line-height: 28px">حدثت مشكلة من جهتنا</span>
+<span style="font-size: 14px; line-height: 22px; color: #6B5F58">المشكلة من جهتنا، وغالباً تُحل بإعادة المحاولة بعد دقيقة</span>
+<button style="height: 48px; padding: 0 20px; border: 0; border-radius: 999px; background: #8E1B25; color: #FFFFFF; font-size: 15px; font-weight: 600">إعادة المحاولة</button>
+</div>
+<div style="height: 268px; box-sizing: border-box; margin-top: 16px; background: #FAF6F0; border: 1px solid #E8E0D6; border-radius: 24px; padding: 20px 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center">
+<svg width="88" height="88" viewBox="0 0 160 160" aria-hidden="true"><ellipse cx="80" cy="136" rx="56" ry="8" fill="#F3EDE5"></ellipse><path d="M44 62h72l-6 62a8 8 0 0 1-8 7H58a8 8 0 0 1-8-7Z" fill="#F7E9EA" stroke="#5C1118" stroke-width="2.5" stroke-linejoin="round"></path><path d="M64 78V56a16 16 0 0 1 32 0v22" fill="none" stroke="#5C1118" stroke-width="2.5" stroke-linecap="round"></path><path d="M66 100h28" stroke="#CFC4B8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 6"></path></svg>
+<span style="font-family: 'Baloo Bhaijaan 2', system-ui, sans-serif; font-size: 20px; font-weight: 700; line-height: 28px">السلة فارغة</span>
+<span style="font-size: 14px; line-height: 22px; color: #6B5F58">ستظهر الأصناف هنا عند إضافتها</span>
+<button style="height: 48px; padding: 0 20px; border: 0; border-radius: 999px; background: #8E1B25; color: #FFFFFF; font-size: 15px; font-weight: 600">تصفح القائمة</button>
+</div>
+<span style="font-size: 13px; line-height: 20px; color: #6B5F58">القالب: رسمة 120، وعنوان h2، وسطر واحد، وزرار لأول خطوة.</span>
+</div>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1360,"height":2200}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

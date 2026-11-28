@@ -1,0 +1,32 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
+
+import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
+
+/// The translations for Arabic (`ar`).
+class AppLocalizationsAr extends AppLocalizations {
+  AppLocalizationsAr([String locale = 'ar']) : super(locale);
+
+  @override
+  String get appTitle => 'هيكا';
+
+  @override
+  String get routeNotFound => 'الصفحة غير موجودة';
+
+  @override
+  String moneyAmount(String amount) {
+    return '$amount ج.م';
+  }
+
+  @override
+  String timeAm(String time) {
+    return '$time ص';
+  }
+
+  @override
+  String timePm(String time) {
+    return '$time م';
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "hika-dev-3fb2e",
+    "dev": "hika-dev-3fb2e",
+    "prod": "hika-279b8"
+  }
+}
