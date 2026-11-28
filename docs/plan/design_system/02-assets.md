@@ -91,6 +91,15 @@
 
 ---
 
+## Review (2026-11-28)
+- `@code-reviewer` (`sonnet`) on `feat/ds-tokens...HEAD`: **PASS WITH NITS**. Fixed:
+  - Added `'Logo'` to the gallery overflow test. The sed edit in 04 never matched because `dart format` had already split the list across lines (lesson: check that a scripted edit really changed the file).
+  - Reverse test: every icon file has an enum value, so no orphan files. A fake file made it fail as expected.
+  - New test: `HikaIcon` renders with no `IconTheme` ancestor.
+- Left as is:
+  - `IconThemeData.opacity` isn't applied. No component uses it yet, so it's added when a disabled-button icon needs it.
+  - Illustration colors are baked in. This is documented (assumption 3) and only matters for dark mode, which isn't in v1.
+
 ## After all tasks
 - `@code-reviewer` (`sonnet`) on `git diff develop...feat/ds-assets` → device check of the gallery → PR to `develop`.
 - Next: `03-formatters`.

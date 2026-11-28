@@ -6,7 +6,7 @@ _Last updated: 2026-11-28_
 - **Epic:** E1 — `design_system`
 - **Sub-feature:** 02 `assets` — plan `docs/plan/design_system/02-assets.md` (approved); 01 `tokens` in PR #7
 - **Branch:** `feat/ds-assets` (stacked on `feat/ds-tokens` until PR #7 merges)
-- **Current task:** 02-04 logo done — all 02 tasks done; waiting: user commit + device check → `@code-reviewer` + PR
+- **Current task:** 02 assets: all tasks done, device check OK (user, 2026-11-28); `@code-reviewer` PASS WITH NITS, nits fixed (see plan "Review") → waiting: user commit, PR #7 merge, then PR to `develop`
 - E0 done: 01-05 merged to `develop` (PR #1-#6) · E1 breakdown approved
 
 ## Next

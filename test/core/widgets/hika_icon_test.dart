@@ -36,6 +36,21 @@ void main() {
         expect(File(icon.fillAsset).existsSync(), isTrue, reason: icon.name);
       }
     });
+
+    test('should have an enum value for every icon file', () {
+      final files = Directory('assets/icons')
+          .listSync()
+          .map((f) => 'assets/icons/${f.uri.pathSegments.last}')
+          .toSet();
+      final fromEnum = {
+        for (final icon in HikaIcons.values) ...[
+          icon.regularAsset,
+          icon.fillAsset,
+        ],
+      };
+
+      expect(files, fromEnum);
+    });
   });
 
   group('HikaIcon', () {
@@ -89,6 +104,21 @@ void main() {
         const ColorFilter.mode(themeColor, BlendMode.srcIn),
       );
     });
+
+    testWidgets(
+      'should render with fallback color when no IconTheme is above',
+      (tester) async {
+        await tester.pumpWidget(
+          const Directionality(
+            textDirection: TextDirection.rtl,
+            child: HikaIcon(HikaIcons.home),
+          ),
+        );
+
+        expect(tester.takeException(), isNull);
+        expect(picture(tester).colorFilter, isNotNull);
+      },
+    );
 
     testWidgets('should use given color when color is given', (tester) async {
       const given = Color(0xFF654321);

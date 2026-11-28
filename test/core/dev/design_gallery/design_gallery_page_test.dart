@@ -13,6 +13,7 @@ void main() {
       'Shadows',
       'Icons',
       'Illustrations',
+      'Logo',
     ];
 
     // Smallest and largest supported widths, at the largest supported font scale.
