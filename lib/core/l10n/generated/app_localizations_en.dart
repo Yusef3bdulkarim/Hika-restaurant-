@@ -11,4 +11,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get appTitle => 'هيكا';
+
+  @override
+  String get routeNotFound => 'الصفحة غير موجودة';
 }

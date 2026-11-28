@@ -3,5 +3,9 @@
   "appTitle": "هيكا",
   "@appTitle": {
     "description": "App name shown in the OS task switcher and the placeholder screen"
+  },
+  "routeNotFound": "الصفحة غير موجودة",
+  "@routeNotFound": {
+    "description": "Shown when the app is opened on an unknown route (e.g. a broken deep link)"
   }
 }

@@ -4,14 +4,14 @@ _Last updated: 2026-11-28_
 
 ## Now
 - **Epic:** E0 — `foundation`
-- **Sub-feature:** 04 `backend_scaffold` — plan `docs/plan/foundation/04-backend_scaffold.md`
-- **Branch:** `feat/backend-scaffold`
-- **Current task:** 04 done — opus review PASS WITH NITS (all 5 fixed); waiting: user commit + PR to `develop`
-- Done: 01, 02, 03 merged to `develop` (PR #1-#3)
+- **Sub-feature:** 05 `router` — plan `docs/plan/foundation/05-router.md`
+- **Branch:** `feat/router`
+- **Current task:** 05 done — review PASS WITH NITS (Flutter floor fixed, not-found follow-up logged); waiting: user commit + PR + merge → E0 done
+- Done: 01-04 merged to `develop` (PR #1-#5)
 
 ## Next
-- `@code-reviewer` (opus) on `feat/backend-scaffold` + PR
-- Then plan `05-router` (last E0 sub-feature)
+- 05-01 router config → 05-02 wire into App → review + PR
+- Then E1 `design_system` breakdown (new chat, Opus, Plan Mode)
 
 ## Open decisions
 - Discovery: Telegram cost decision + iOS-later confirmation still marked pending in `00-discovery-notes.md`
@@ -20,10 +20,11 @@ _Last updated: 2026-11-28_
 - `ApiSuccess` / `ApiFailure` have no value equality — add `Equatable` when the first repository test needs `expect(result, ApiSuccess(x))` (review 02)
 - iOS: Firebase options not generated — `firebaseOptionsFor` throws `UnsupportedError` on iOS; run `flutterfire configure --platforms=ios` per flavor before any iOS build
 - Emulators need Java 21+ — JDK 25 (Temurin) installed, first on PATH; Flutter still uses Android Studio JBR 21
-- Vitest fails from a lower-case drive path (`f:`) — `functions/scripts/vitest.mjs` re-runs it from `F:`
+- Lower-case drive path (`f:\`, how VS Code opens the folder) breaks tools: Vitest (fixed by `functions/scripts/vitest.mjs`) and `flutter pub get` sometimes deletes `lib/core/l10n/generated/*` → run `flutter gen-l10n`. Better: open the folder as `F:\work\hika\hika_app`
 - `functions/package.json` `overrides` pins `@grpc/grpc-js ^1.14.7` under `@firebase/firestore` — remove when `firebase` ships a fixed version
 - Kotlin incremental compile disabled (`android/gradle.properties`) — cross-drive cache bug (project F:, pub cache C:)
 - Plain `flutter run` fails (no `lib/main.dart`) — always `--flavor dev -t lib/main_dev.dart`
+- `NotFoundPage` has no way back home — add a "go home" action in E2 (splash/shell) or E11 (deep links)
 - `docs/brief/*.md.crdownload` — files have the Chrome partial-download extension
 
 ## Learning stages
@@ -47,6 +48,8 @@ _Last updated: 2026-11-28_
 - 2026-11-28 · foundation 04-01 Firebase config + deny-all Rules — `.firebaserc`, `firebase.json`, rules
 - 2026-11-28 · foundation 04-02 Functions TS package — Node 24, TS ~6.0.3 (typescript-eslint limit), ESLint flat
 - 2026-11-28 · foundation 04-03 Rules test harness — Vitest + rules-unit-testing, 9 deny-all tests, grpc-js override
+- 2026-11-28 · foundation 05-01 Router config — `go_router` 18, `AppRoutes`, `createRouter()`, not-found page
+- 2026-11-28 · foundation 05-02 Wire router into App — `MaterialApp.router`, router owned + disposed by `App`
 
 ## Starter message for a new chat
-> كمّل من docs/progress.md — التاسك الجاية: @code-reviewer (opus) على feat/backend-scaffold ثم PR، وبعدها plan foundation 05-router.
+> كمّل من docs/progress.md — التاسك الجاية: @code-reviewer على feat/router ثم PR، وبعدها E1 design_system breakdown.

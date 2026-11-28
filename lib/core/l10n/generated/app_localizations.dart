@@ -103,6 +103,12 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'هيكا'**
   String get appTitle;
+
+  /// Shown when the app is opened on an unknown route (e.g. a broken deep link)
+  ///
+  /// In ar, this message translates to:
+  /// **'الصفحة غير موجودة'**
+  String get routeNotFound;
 }
 
 class _AppLocalizationsDelegate
