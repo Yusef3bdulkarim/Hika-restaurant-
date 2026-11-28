@@ -17,5 +17,25 @@
         "example": "220"
       }
     }
+  },
+  "timeAm": "{time}\u00A0ص",
+  "@timeAm": {
+    "description": "Clock time before noon, 12h (e.g. 9:30 ص). time is pre-formatted with Western digits. Non-breaking space keeps the period on the same line.",
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "9:30"
+      }
+    }
+  },
+  "timePm": "{time}\u00A0م",
+  "@timePm": {
+    "description": "Clock time from noon, 12h (e.g. 9:30 م). time is pre-formatted with Western digits. Non-breaking space keeps the period on the same line.",
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "9:30"
+      }
+    }
   }
 }

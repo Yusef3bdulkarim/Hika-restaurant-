@@ -30,6 +30,46 @@ void main() {
     });
   });
 
+  group('formatClock', () {
+    test('should pad minutes to two digits when minute is below 10', () {
+      expect(formatClock(9, 5), (clock: '9:05', isAm: true));
+    });
+
+    test('should throw ArgumentError when hour is out of range', () {
+      expect(() => formatClock(24, 0), throwsArgumentError);
+    });
+
+    test('should throw ArgumentError when minute is out of range', () {
+      expect(() => formatClock(10, 60), throwsArgumentError);
+    });
+  });
+
+  group('HikaFormatters.time', () {
+    final l10n = lookupAppLocalizations(const Locale('ar'));
+    String at(int hour, int minute) =>
+        l10n.time(DateTime(2026, 11, 28, hour, minute));
+
+    test('should show 9:30 م when time is 21:30', () {
+      expect(at(21, 30), '9:30$nbspم');
+    });
+
+    test('should show 1:00 ص when time is 01:00', () {
+      expect(at(1, 0), '1:00$nbspص');
+    });
+
+    test('should show 12 ص when time is midnight', () {
+      expect(at(0, 0), '12$nbspص');
+    });
+
+    test('should show 12:30 ص when time is 00:30', () {
+      expect(at(0, 30), '12:30$nbspص');
+    });
+
+    test('should show 12:00 م when time is noon', () {
+      expect(at(12, 0), '12:00$nbspم');
+    });
+  });
+
   group('HikaFormatters.money', () {
     final l10n = lookupAppLocalizations(const Locale('ar'));
 

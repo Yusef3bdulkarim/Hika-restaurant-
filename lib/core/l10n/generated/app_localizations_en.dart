@@ -19,4 +19,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String moneyAmount(String amount) {
     return '$amount ج.م';
   }
+
+  @override
+  String timeAm(String time) {
+    return '$time ص';
+  }
+
+  @override
+  String timePm(String time) {
+    return '$time م';
+  }
 }
