@@ -3,7 +3,42 @@ import 'package:flutter/material.dart';
 import '../../theme/hika_spacing.dart';
 import '../../theme/theme_context.dart';
 import '../../widgets/hika_icon.dart';
+import '../../widgets/hika_illustration.dart';
 import 'gallery_section.dart';
+
+/// Every illustration at the inline size (120).
+class IllustrationsSection extends StatelessWidget {
+  const IllustrationsSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GallerySection(
+      title: 'Illustrations',
+      child: Wrap(
+        spacing: HikaSpacing.md,
+        runSpacing: HikaSpacing.md,
+        children: [
+          for (final illustration in HikaIllustrations.values)
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                HikaIllustration(
+                  illustration,
+                  size: HikaIllustrationSize.inline,
+                ),
+                Text(
+                  illustration.name,
+                  style: context.textStyles.micro.copyWith(
+                    color: context.colors.textSecondary,
+                  ),
+                ),
+              ],
+            ),
+        ],
+      ),
+    );
+  }
+}
 
 /// Every icon: Regular in textPrimary, Fill in primary (as in M1-Icons).
 class IconsSection extends StatelessWidget {

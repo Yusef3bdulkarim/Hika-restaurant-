@@ -23,6 +23,7 @@ class DesignGalleryPage extends StatelessWidget {
           RadiiSection(),
           ShadowsSection(),
           IconsSection(),
+          IllustrationsSection(),
         ],
       ),
     );

@@ -69,7 +69,7 @@
   - `should have an asset file for every illustration`
   - `should be excluded from semantics when rendered`
 - **Done when:** analyze clean, tests pass, all 15 seen in the gallery on device.
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ## 04 — Logo (vectorized)
 - **Layer:** presentation (core)

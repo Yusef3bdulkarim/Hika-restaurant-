@@ -75,6 +75,7 @@ flutter:
     - assets/fonts/OFL-BalooBhaijaan2.txt
     - assets/fonts/OFL-ReadexPro.txt
     - assets/icons/
+    - assets/illustrations/
 
   fonts:
     - family: BalooBhaijaan2

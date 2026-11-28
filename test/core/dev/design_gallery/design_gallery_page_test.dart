@@ -5,7 +5,15 @@ import 'package:hika_app/core/theme/hika_theme.dart';
 
 void main() {
   group('DesignGalleryPage', () {
-    const sections = ['Colors', 'Type', 'Spacing', 'Radii', 'Shadows', 'Icons'];
+    const sections = [
+      'Colors',
+      'Type',
+      'Spacing',
+      'Radii',
+      'Shadows',
+      'Icons',
+      'Illustrations',
+    ];
 
     // Smallest and largest supported widths, at the largest supported font scale.
     for (final width in [360.0, 430.0]) {
