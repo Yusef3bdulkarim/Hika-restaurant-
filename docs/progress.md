@@ -4,14 +4,14 @@ _Last updated: 2026-11-28_
 
 ## Now
 - **Epic:** E0 — `foundation`
-- **Sub-feature:** 04 `backend_scaffold` — plan `docs/plan/foundation/04-backend_scaffold.md`
-- **Branch:** `feat/backend-scaffold`
-- **Current task:** 04 done — opus review PASS WITH NITS (all 5 fixed); waiting: user commit + PR to `develop`
-- Done: 01, 02, 03 merged to `develop` (PR #1-#3)
+- **Sub-feature:** 05 `router` — plan `docs/plan/foundation/05-router.md`
+- **Branch:** `feat/router` (user creates from `develop`)
+- **Current task:** 05 plan written — waiting for approval
+- Done: 01-04 merged to `develop` (PR #1-#5)
 
 ## Next
-- `@code-reviewer` (opus) on `feat/backend-scaffold` + PR
-- Then plan `05-router` (last E0 sub-feature)
+- 05-01 router config → 05-02 wire into App → review + PR
+- Then E1 `design_system` breakdown (new chat, Opus, Plan Mode)
 
 ## Open decisions
 - Discovery: Telegram cost decision + iOS-later confirmation still marked pending in `00-discovery-notes.md`
@@ -49,4 +49,4 @@ _Last updated: 2026-11-28_
 - 2026-11-28 · foundation 04-03 Rules test harness — Vitest + rules-unit-testing, 9 deny-all tests, grpc-js override
 
 ## Starter message for a new chat
-> كمّل من docs/progress.md — التاسك الجاية: @code-reviewer (opus) على feat/backend-scaffold ثم PR، وبعدها plan foundation 05-router.
+> كمّل من docs/progress.md — التاسك الجاية: foundation 05-01 Router config (docs/plan/foundation/05-router.md).
