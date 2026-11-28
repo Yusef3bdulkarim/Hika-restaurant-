@@ -22,7 +22,7 @@
 - **Do NOT touch:** `app.dart`, any widget.
 - **Tests:** none (no logic). Checked in task 06: gallery shows both families.
 - **Done when:** analyze clean, existing tests pass, `flutter build apk --debug --flavor dev -t lib/main_dev.dart` succeeds.
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ## 02 — Colors
 - **Layer:** presentation (core)
