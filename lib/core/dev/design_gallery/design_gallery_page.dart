@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../theme/hika_spacing.dart';
+import 'asset_sections.dart';
 import 'token_sections.dart';
 
 /// Dev-only page that shows every token and component with all its states.
@@ -21,6 +22,9 @@ class DesignGalleryPage extends StatelessWidget {
           SpacingSection(),
           RadiiSection(),
           ShadowsSection(),
+          IconsSection(),
+          IllustrationsSection(),
+          LogoSection(),
         ],
       ),
     );
