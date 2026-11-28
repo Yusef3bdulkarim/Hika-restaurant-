@@ -46,7 +46,7 @@
 - **Do NOT touch:** `hika_colors.dart`.
 - **Tests:** `should use Baloo for display and headings when standard styles are read` · `should match M1-Type size weight and line height when standard styles are read` (table-driven, all 12) · `should replace only the given style when copyWith is called`.
 - **Done when:** analyze clean, tests pass.
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ## 04 — Spacing, radii, shadows, motion
 - **Layer:** presentation (core)
