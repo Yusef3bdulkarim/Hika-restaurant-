@@ -87,7 +87,7 @@
 - **Do NOT touch:** theme files (unless a bug is found).
 - **Tests:** `should open design gallery when flavor is dev` · `should show not-found page when gallery path is opened in prod` · existing router + app tests updated to pass `flavor`.
 - **Done when:** analyze clean, all tests pass, gallery checked on device at 360 / 430 width and font scale 130 %.
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ---
 

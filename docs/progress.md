@@ -6,7 +6,7 @@ _Last updated: 2026-11-28_
 - **Epic:** E1 — `design_system`
 - **Sub-feature:** 01 `tokens` — plan `docs/plan/design_system/01-tokens.md` (approved)
 - **Branch:** `feat/ds-tokens`
-- **Current task:** 01-05 ThemeData + App done — waiting: user commit; next 01-06 gallery
+- **Current task:** 01-06 gallery done — waiting: user commit + device check (360/430, font 130 %); then `@code-reviewer` + PR
 - E0 done: 01-05 merged to `develop` (PR #1-#6) · E1 breakdown approved
 
 ## Next
@@ -55,6 +55,7 @@ _Last updated: 2026-11-28_
 - 2026-11-28 · design_system 01-03 Typography — `HikaTextStyles` ThemeExtension, 12 styles, no color
 - 2026-11-28 · design_system 01-04 Const tokens — `HikaSpacing`, `HikaRadii`, `HikaShadows`, `HikaMotion`
 - 2026-11-28 · design_system 01-05 ThemeData + App — full `ColorScheme`, 15 `TextTheme` slots, letterSpacing 0, `context.colors`
+- 2026-11-28 · design_system 01-06 Design gallery — dev-only route, `App(flavor:)`, token sections, overflow test 360 / 130 %
 
 ## Starter message for a new chat
-> كمّل من docs/progress.md — التاسك الجاية: design_system 01-06 gallery على `feat/ds-tokens`.
+> كمّل من docs/progress.md — التاسك الجاية: @code-reviewer على feat/ds-tokens ثم PR، وبعدها plan `design_system/02-assets.md`.

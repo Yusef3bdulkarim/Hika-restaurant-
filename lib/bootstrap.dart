@@ -13,7 +13,7 @@ Future<void> bootstrap(Flavor flavor) async {
   _registerFontLicenses();
   await Firebase.initializeApp(options: firebaseOptionsFor(flavor));
   configureDependencies();
-  runApp(const App());
+  runApp(App(flavor: flavor));
 }
 
 /// Bundled fonts are OFL: their license must ship with the app.
