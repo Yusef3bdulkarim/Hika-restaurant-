@@ -109,6 +109,12 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'الصفحة غير موجودة'**
   String get routeNotFound;
+
+  /// An amount in Egyptian pounds. amount is pre-formatted (Western digits, thousands comma). Keep the non-breaking space so the unit never wraps alone.
+  ///
+  /// In ar, this message translates to:
+  /// **'{amount} ج.م'**
+  String moneyAmount(String amount);
 }
 
 class _AppLocalizationsDelegate
