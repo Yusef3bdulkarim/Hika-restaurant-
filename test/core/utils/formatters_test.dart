@@ -4,29 +4,48 @@ import 'package:hika_app/core/l10n/generated/app_localizations.dart';
 import 'package:hika_app/core/utils/formatters.dart';
 
 void main() {
-  const nbsp = ' ';
+  final nbsp = String.fromCharCode(0xA0);
+  final l10n = lookupAppLocalizations(const Locale('ar'));
 
   group('formatNumber', () {
     test('should group thousands with a comma when value is 25000', () {
       expect(formatNumber(25000), '25,000');
     });
 
-    test('should show no decimals when value is whole', () {
+    test('should show no decimals when value is a whole int', () {
       expect(formatNumber(220), '220');
+    });
+
+    test('should show no decimals when value is a whole double', () {
       expect(formatNumber(220.0), '220');
     });
 
     test('should show two decimals when value has a fraction', () {
       expect(formatNumber(13.35), '13.35');
+    });
+
+    test('should pad to two decimals when fraction has one digit', () {
       expect(formatNumber(13.5), '13.50');
+    });
+
+    test('should show no decimals when fraction rounds away', () {
+      expect(formatNumber(220.004), '220');
+    });
+
+    test('should show 0 without a sign when tiny negative rounds to zero', () {
+      expect(formatNumber(-0.001), '0');
     });
 
     test('should keep the minus sign when value is negative', () {
       expect(formatNumber(-20), '-20');
     });
 
-    test('should use Western digits when value is formatted', () {
-      expect(formatNumber(1234567.89), matches(RegExp(r'^[0-9,.]+$')));
+    test('should throw ArgumentError when value is NaN', () {
+      expect(() => formatNumber(double.nan), throwsArgumentError);
+    });
+
+    test('should throw ArgumentError when value is infinite', () {
+      expect(() => formatNumber(double.infinity), throwsArgumentError);
     });
   });
 
@@ -35,17 +54,32 @@ void main() {
       expect(formatClock(9, 5), (clock: '9:05', isAm: true));
     });
 
-    test('should throw ArgumentError when hour is out of range', () {
+    test('should mark pm when hour is 12', () {
+      expect(formatClock(12, 30), (clock: '12:30', isAm: false));
+    });
+
+    test('should accept 23:59 when it is the last minute of the day', () {
+      expect(formatClock(23, 59), (clock: '11:59', isAm: false));
+    });
+
+    test('should throw ArgumentError when hour is above 23', () {
       expect(() => formatClock(24, 0), throwsArgumentError);
     });
 
-    test('should throw ArgumentError when minute is out of range', () {
+    test('should throw ArgumentError when hour is negative', () {
+      expect(() => formatClock(-1, 0), throwsArgumentError);
+    });
+
+    test('should throw ArgumentError when minute is above 59', () {
       expect(() => formatClock(10, 60), throwsArgumentError);
+    });
+
+    test('should throw ArgumentError when minute is negative', () {
+      expect(() => formatClock(10, -1), throwsArgumentError);
     });
   });
 
   group('HikaFormatters.time', () {
-    final l10n = lookupAppLocalizations(const Locale('ar'));
     String at(int hour, int minute) =>
         l10n.time(DateTime(2026, 11, 28, hour, minute));
 
@@ -71,10 +105,16 @@ void main() {
   });
 
   group('HikaFormatters.money', () {
-    final l10n = lookupAppLocalizations(const Locale('ar'));
-
     test('should join amount and ج.م with a non-breaking space when money is formatted', () {
       expect(l10n.money(25000), '25,000$nbspج.م');
+    });
+
+    test('should show two decimals when money has a fraction', () {
+      expect(l10n.money(13.5), '13.50$nbspج.م');
+    });
+
+    test('should keep the minus sign when money is a discount', () {
+      expect(l10n.money(-20), '-20$nbspج.م');
     });
   });
 }

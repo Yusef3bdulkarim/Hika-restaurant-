@@ -6,9 +6,16 @@ import '../l10n/generated/app_localizations.dart';
 final _whole = NumberFormat('#,##0', 'en');
 final _fraction = NumberFormat('#,##0.00', 'en');
 
-/// `25000` → `25,000`, `13.5` → `13.50`. No decimals when [value] is whole.
-String formatNumber(num value) =>
-    (value % 1 == 0 ? _whole : _fraction).format(value);
+/// `25000` → `25,000`, `13.5` → `13.50`. Rounded to 2 decimals first, then
+/// shown with no decimals when whole (`220.004` → `220`, `-0.001` → `0`).
+/// Throws [ArgumentError] for NaN or infinity: a bad amount must not reach the screen.
+String formatNumber(num value) {
+  if (!value.isFinite) {
+    throw ArgumentError.value(value, 'value', 'must be finite');
+  }
+  final rounded = (value * 100).round() / 100;
+  return (rounded % 1 == 0 ? _whole : _fraction).format(rounded);
+}
 
 /// 24h → 12h clock: `(21, 30)` → `9:30` (pm), `(1, 0)` → `1:00` (am).
 /// Midnight is `12` with no minutes, as the design writes it («12 ص»).
@@ -30,7 +37,8 @@ extension HikaFormatters on AppLocalizations {
   /// `220` → `220 ج.م` (non-breaking space). [amount] is in pounds.
   String money(num amount) => moneyAmount(formatNumber(amount));
 
-  /// `21:30` → `9:30 م` (non-breaking space). Uses the local hour and minute.
+  /// `21:30` → `9:30 م` (non-breaking space). Uses [value]'s hour and minute
+  /// as given: convert a UTC time with `toLocal()` first.
   String time(DateTime value) {
     final (:clock, :isAm) = formatClock(value.hour, value.minute);
     return isAm ? timeAm(clock) : timePm(clock);

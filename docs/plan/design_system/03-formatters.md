@@ -70,6 +70,18 @@
 - **02:** a non-breaking space before `ص` / `م` too, for the same reason as `ج.م`.
 - **Process:** this plan was first committed on `feat/ds-assets` but never pushed, so it was restored onto this branch from commit `892042d`.
 
+## Review (2026-11-28)
+- `@code-reviewer` (`sonnet`): **PASS WITH NITS**. Fixed:
+  - `formatNumber` throws `ArgumentError` on NaN or infinity, so a bad amount never shows on screen.
+  - The value is rounded to 2 decimals before the whole-number check: `220.004` → `220`, `-0.001` → `0` (no `-0.00`).
+  - New tests:
+    - money with a fraction and with a negative value.
+    - clock bounds: `-1` hour or minute, `23:59`, `12:30` pm.
+    - the old tests with two expects split into one behavior each.
+  - The locale-pin test moved to its own file, `formatters_locale_test.dart`. The first version passed even with `'en'` removed, because the `NumberFormat`s are cached top-level finals already built by earlier tests. Its own isolate sets `ar_EG` first, and a mutation now fails with `-١٬٢٣٤٬٥٦٧٫٨٩`.
+  - The `time()` doc now says it uses the `DateTime`'s hour as given and that callers convert with `toLocal()` first.
+- Accepted: values ≥ 2^63 format wrong (`intl` uses 64-bit ints). That isn't realistic for prices.
+
 ## After all tasks
 - `@code-reviewer` (`sonnet`) on `git diff develop...feat/ds-formatters` → PR to `develop`. No device check needed (no UI).
 - Next: `04-buttons_inputs`.

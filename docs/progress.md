@@ -6,7 +6,7 @@ _Last updated: 2026-11-28_
 - **Epic:** E1 — `design_system`
 - **Sub-feature:** 03 `formatters` — plan `docs/plan/design_system/03-formatters.md` (approved)
 - **Branch:** `feat/ds-formatters` (develop merged in after PR #8)
-- **Current task:** 03 formatters: both tasks done; `@code-reviewer` running → then PR
+- **Current task:** 03 formatters: both tasks done; `@code-reviewer` PASS WITH NITS, nits fixed → PR open
 - E0 done (PR #1-#6) · E1: 01 tokens merged (PR #7), 02 assets merged (PR #8)
 
 ## Next
