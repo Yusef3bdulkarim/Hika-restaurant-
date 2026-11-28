@@ -51,6 +51,28 @@ void main() {
       });
     });
 
+    group('lerp', () {
+      test('should return this when lerp other is not HikaTextStyles', () {
+        // Act
+        final result = s.lerp(null, 0.5);
+
+        // Assert
+        expect(result, same(s));
+      });
+
+      test('should return other styles when lerp t is 1', () {
+        // Arrange
+        final other = s.copyWith(body: s.body.copyWith(fontSize: 99));
+
+        // Act
+        final result = s.lerp(other, 1);
+
+        // Assert
+        expect(result.body.fontSize, 99);
+        expect(result.h1.fontSize, s.h1.fontSize);
+      });
+    });
+
     group('copyWith', () {
       test('should replace only the given style when copyWith is called', () {
         // Arrange

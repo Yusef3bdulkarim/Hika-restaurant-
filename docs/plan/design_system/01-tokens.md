@@ -65,7 +65,7 @@
 - **Layer:** wiring
 - **Goal:** the app runs on our theme, and Material widgets pick up our tokens.
 - **Touch:**
-  - create `lib/core/theme/hika_theme.dart`: `HikaTheme.light()` builds a `ThemeData` with Material 3, a `ColorScheme` mapped from `HikaColors.light`, scaffold background, `fontFamily` Readex, `textTheme` mapped from `HikaTextStyles` with color `textPrimary`, and `extensions: [HikaColors.light, HikaTextStyles.standard]`.
+  - create `lib/core/theme/hika_theme.dart`: `HikaTheme.light()` builds a `ThemeData` with Material 3, a `ColorScheme` mapped from `HikaColors.light`, scaffold background, `textTheme` (color `textPrimary`) and `primaryTextTheme` (color `onPrimary`) mapped from `HikaTextStyles` in all 15 slots, and `extensions: [HikaColors.light, HikaTextStyles.standard]`.
   - create `lib/core/theme/theme_context.dart`: `BuildContext` extension exposing `colors` and `textStyles`.
   - `lib/app.dart`: `theme: HikaTheme.light()`.
   - test file: `test/core/theme/hika_theme_test.dart`.
@@ -90,6 +90,16 @@
 - **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ---
+
+## Review (2026-11-28)
+- `@code-reviewer` (`sonnet`): **PASS WITH NITS**. Fixed:
+  - `primaryTextTheme` mapped, so text on primary surfaces is no longer Roboto.
+  - The theme is built once per `App`, not on every rebuild.
+  - Gallery hex values are 6 digits, same as M1-Colors.
+  - Gallery test covers 360 and 430 widths and every section.
+  - New tests: shadows ↔ `textPrimary`, `HikaTextStyles.lerp`, `ElevatedButton` label font.
+- Rejected: "set `ThemeData.fontFamily`". `ThemeData` applies it to every text slot, which would turn the Baloo headings into Readex. All slots are filled instead (`fontFamily` was dropped from the 05 text).
+- Accepted as-is: the gallery code ships in the prod binary. The route is unreachable there and the page holds no secrets.
 
 ## After all tasks
 - `@code-reviewer` (`sonnet`) on `git diff develop...feat/ds-tokens` → you check the gallery on device → PR to `develop`.

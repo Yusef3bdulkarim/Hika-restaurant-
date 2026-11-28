@@ -32,6 +32,8 @@ abstract final class HikaTheme {
       ),
       scaffoldBackgroundColor: colors.background,
       textTheme: _textTheme(styles, colors.textPrimary),
+      // Text on primary-colored surfaces; would fall back to Roboto otherwise.
+      primaryTextTheme: _textTheme(styles, colors.onPrimary),
       extensions: const [colors, styles],
     );
   }

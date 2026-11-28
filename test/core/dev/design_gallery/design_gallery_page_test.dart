@@ -5,38 +5,45 @@ import 'package:hika_app/core/theme/hika_theme.dart';
 
 void main() {
   group('DesignGalleryPage', () {
-    testWidgets(
-      'should render every section without overflow when width is 360 and font scale is 130%',
-      (tester) async {
-        // Arrange: smallest supported width, largest supported font scale
-        tester.view.physicalSize = const Size(360, 2400);
-        tester.view.devicePixelRatio = 1;
-        addTearDown(tester.view.reset);
+    const sections = ['Colors', 'Type', 'Spacing', 'Radii', 'Shadows'];
 
-        // Act
-        await tester.pumpWidget(
-          MaterialApp(
-            theme: HikaTheme.light(),
-            home: const MediaQuery(
-              data: MediaQueryData(
-                size: Size(360, 2400),
-                textScaler: TextScaler.linear(1.3),
-              ),
-              child: Directionality(
-                textDirection: TextDirection.rtl,
-                child: DesignGalleryPage(),
+    // Smallest and largest supported widths, at the largest supported font scale.
+    for (final width in [360.0, 430.0]) {
+      testWidgets(
+        'should render every section without overflow when width is ${width.toInt()} and font scale is 130%',
+        (tester) async {
+          // Arrange
+          final size = Size(width, 800);
+          tester.view.physicalSize = size;
+          tester.view.devicePixelRatio = 1;
+          addTearDown(tester.view.reset);
+
+          // Act
+          await tester.pumpWidget(
+            MaterialApp(
+              theme: HikaTheme.light(),
+              home: MediaQuery(
+                data: MediaQueryData(
+                  size: size,
+                  textScaler: const TextScaler.linear(1.3),
+                ),
+                child: const Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: DesignGalleryPage(),
+                ),
               ),
             ),
-          ),
-        );
+          );
 
-        // The list is lazy: scroll to the last section so all get laid out.
-        await tester.scrollUntilVisible(find.text('Shadows'), 500);
-
-        // Assert: an overflow is reported as an exception
-        expect(tester.takeException(), isNull);
-        expect(find.text('Shadows'), findsOneWidget);
-      },
-    );
+          // Assert: the list is lazy, so scroll to each section in turn.
+          // A missing section fails the find; an overflow is reported as an exception.
+          for (final title in sections) {
+            await tester.scrollUntilVisible(find.text(title), 300);
+            expect(find.text(title), findsOneWidget);
+            expect(tester.takeException(), isNull, reason: title);
+          }
+        },
+      );
+    }
   });
 }

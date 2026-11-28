@@ -76,6 +76,42 @@ void main() {
           expect(style.letterSpacing, 0);
         },
       );
+
+      testWidgets(
+        'should render Material button label in Readex with no letter spacing when widget is under HikaTheme',
+        (tester) async {
+          // Act
+          await tester.pumpWidget(
+            MaterialApp(
+              theme: HikaTheme.light(),
+              home: Scaffold(
+                body: ElevatedButton(
+                  onPressed: () {},
+                  child: const Text('أضف'),
+                ),
+              ),
+            ),
+          );
+
+          // Assert
+          final style = DefaultTextStyle.of(tester.element(find.text('أضف')))
+              .style;
+          expect(style.fontFamily, HikaFonts.readex);
+          expect(style.letterSpacing, 0);
+        },
+      );
+
+      test(
+        'should use Readex onPrimary in primaryTextTheme when theme is built',
+        () {
+          // Act
+          final style = HikaTheme.light().primaryTextTheme.bodyMedium!;
+
+          // Assert
+          expect(style.fontFamily, HikaFonts.readex);
+          expect(style.color, HikaColors.light.onPrimary);
+        },
+      );
     });
   });
 }

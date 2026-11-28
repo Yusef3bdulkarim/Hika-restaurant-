@@ -17,6 +17,7 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   late final GoRouter _router = createRouter(flavor: widget.flavor);
+  final ThemeData _theme = HikaTheme.light();
 
   @override
   void dispose() {
@@ -31,7 +32,7 @@ class _AppState extends State<App> {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       onGenerateTitle: (context) => AppLocalizations.of(context).appTitle,
-      theme: HikaTheme.light(),
+      theme: _theme,
       routerConfig: _router,
     );
   }

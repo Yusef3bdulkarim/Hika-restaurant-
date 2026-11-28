@@ -70,11 +70,13 @@ class _Swatch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final hex = color
+    final argb = color
         .toARGB32()
         .toRadixString(16)
         .toUpperCase()
         .padLeft(8, '0');
+    // Same format as M1-Colors: 6 digits, alpha only when not opaque.
+    final hex = argb.startsWith('FF') ? argb.substring(2) : argb;
     return Padding(
       padding: const EdgeInsets.only(bottom: HikaSpacing.sm),
       child: Row(
