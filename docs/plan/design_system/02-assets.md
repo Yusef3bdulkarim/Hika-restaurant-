@@ -86,7 +86,8 @@
   - `should load rings asset when variant is rings`
   - `should have an asset file for every variant`
 - **Done when:** analyze clean, tests pass, you approve the overlay on device. If you reject it → PNG fallback (assumption 6).
-- **Model:** Opus (brand mark, judgment on trace quality) · **Owner:** Claude · **Status:** todo
+- **Done as:** trace checked by pixel diff of the `flutter_svg` render vs the source mask (full 0.59 %, rings 0.43 %, word 0.60 %, edges only), instead of an in-app overlay. `HikaLogo` takes `width`, not `size` (word is 391 × 179).
+- **Model:** Opus (brand mark, judgment on trace quality) · **Owner:** Claude · **Status:** done
 
 ---
 

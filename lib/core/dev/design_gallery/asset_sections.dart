@@ -4,7 +4,35 @@ import '../../theme/hika_spacing.dart';
 import '../../theme/theme_context.dart';
 import '../../widgets/hika_icon.dart';
 import '../../widgets/hika_illustration.dart';
+import '../../widgets/hika_logo.dart';
 import 'gallery_section.dart';
+
+/// Logo variants at the stamp size (168), in primary and positive.
+class LogoSection extends StatelessWidget {
+  const LogoSection({super.key});
+
+  static const _width = 168.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return GallerySection(
+      title: 'Logo',
+      child: Wrap(
+        spacing: HikaSpacing.lg,
+        runSpacing: HikaSpacing.lg,
+        children: [
+          for (final variant in HikaLogoVariant.values)
+            HikaLogo(width: _width, variant: variant),
+          HikaLogo(
+            width: _width,
+            variant: HikaLogoVariant.rings,
+            color: context.colors.positive,
+          ),
+        ],
+      ),
+    );
+  }
+}
 
 /// Every illustration at the inline size (120).
 class IllustrationsSection extends StatelessWidget {
