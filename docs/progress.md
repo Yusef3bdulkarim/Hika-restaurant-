@@ -6,7 +6,7 @@ _Last updated: 2026-11-28_
 - **Epic:** E0 — `foundation`
 - **Sub-feature:** 05 `router` — plan `docs/plan/foundation/05-router.md`
 - **Branch:** `feat/router`
-- **Current task:** 05 tasks done — waiting: user commits (05-01 staged, 05-02), then `@code-reviewer` + PR
+- **Current task:** 05 done — review PASS WITH NITS (Flutter floor fixed, not-found follow-up logged); waiting: user commit + PR + merge → E0 done
 - Done: 01-04 merged to `develop` (PR #1-#5)
 
 ## Next
@@ -20,10 +20,11 @@ _Last updated: 2026-11-28_
 - `ApiSuccess` / `ApiFailure` have no value equality — add `Equatable` when the first repository test needs `expect(result, ApiSuccess(x))` (review 02)
 - iOS: Firebase options not generated — `firebaseOptionsFor` throws `UnsupportedError` on iOS; run `flutterfire configure --platforms=ios` per flavor before any iOS build
 - Emulators need Java 21+ — JDK 25 (Temurin) installed, first on PATH; Flutter still uses Android Studio JBR 21
-- Vitest fails from a lower-case drive path (`f:`) — `functions/scripts/vitest.mjs` re-runs it from `F:`
+- Lower-case drive path (`f:\`, how VS Code opens the folder) breaks tools: Vitest (fixed by `functions/scripts/vitest.mjs`) and `flutter pub get` sometimes deletes `lib/core/l10n/generated/*` → run `flutter gen-l10n`. Better: open the folder as `F:\work\hika\hika_app`
 - `functions/package.json` `overrides` pins `@grpc/grpc-js ^1.14.7` under `@firebase/firestore` — remove when `firebase` ships a fixed version
 - Kotlin incremental compile disabled (`android/gradle.properties`) — cross-drive cache bug (project F:, pub cache C:)
 - Plain `flutter run` fails (no `lib/main.dart`) — always `--flavor dev -t lib/main_dev.dart`
+- `NotFoundPage` has no way back home — add a "go home" action in E2 (splash/shell) or E11 (deep links)
 - `docs/brief/*.md.crdownload` — files have the Chrome partial-download extension
 
 ## Learning stages
