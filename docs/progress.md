@@ -6,7 +6,7 @@ _Last updated: 2026-11-28_
 - **Epic:** E1 — `design_system`
 - **Sub-feature:** 02 `assets` — plan `docs/plan/design_system/02-assets.md` (approved); 01 `tokens` in PR #7
 - **Branch:** `feat/ds-assets` (stacked on `feat/ds-tokens` until PR #7 merges)
-- **Current task:** 02-01 icon assets done — waiting: user commit; next 02-02 HikaIcon
+- **Current task:** 02-02 HikaIcon done — waiting: user commit; next 02-03 illustrations
 - E0 done: 01-05 merged to `develop` (PR #1-#6) · E1 breakdown approved
 
 ## Next
@@ -57,6 +57,7 @@ _Last updated: 2026-11-28_
 - 2026-11-28 · design_system 01-05 ThemeData + App — full `ColorScheme`, 15 `TextTheme` slots, letterSpacing 0, `context.colors`
 - 2026-11-28 · design_system 01-06 Design gallery — dev-only route, `App(flavor:)`, token sections, overflow test 360 / 130 %
 - 2026-11-28 · design_system 02-01 Icon assets — 118 SVGs, `flutter_svg` 2.5.1, masks verified by render; icons drawn for RTL
+- 2026-11-28 · design_system 02-02 HikaIcon — enum of 59, IconTheme color, mirror in LTR, gallery section
 
 ## Starter message for a new chat
-> كمّل من docs/progress.md — التاسك الجاية: 02-02 HikaIcon على `feat/ds-assets`.
+> كمّل من docs/progress.md — التاسك الجاية: 02-03 illustrations على `feat/ds-assets`.

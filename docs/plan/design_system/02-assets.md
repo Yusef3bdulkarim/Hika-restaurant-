@@ -51,7 +51,7 @@
   - `should be excluded from semantics when no label is given`
   - Gallery overflow test still passes.
 - **Done when:** analyze clean, tests pass, every asset path in the enum exists (test: `should have an asset file for every icon and variant`).
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ## 03 — Illustrations
 - **Layer:** presentation (core)
