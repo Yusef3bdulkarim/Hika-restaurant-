@@ -37,7 +37,7 @@
 - **Do NOT touch:** `ThemeData` (task 05).
 - **Tests:** `should replace only the given color when copyWith is called` · `should return this when lerp other is not HikaColors` · `should return other colors when lerp t is 1`.
 - **Done when:** analyze clean, tests pass, values match `M1-Colors` one by one.
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ## 03 — Typography
 - **Layer:** presentation (core)

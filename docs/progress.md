@@ -6,7 +6,7 @@ _Last updated: 2026-11-28_
 - **Epic:** E1 — `design_system`
 - **Sub-feature:** 01 `tokens` — plan `docs/plan/design_system/01-tokens.md` (approved)
 - **Branch:** `feat/ds-tokens`
-- **Current task:** 01-01 fonts done — waiting: user commit; next 01-02 colors
+- **Current task:** 01-02 colors done — waiting: user commit; next 01-03 typography
 - E0 done: 01-05 merged to `develop` (PR #1-#6) · E1 breakdown approved
 
 ## Next
@@ -51,6 +51,7 @@ _Last updated: 2026-11-28_
 - 2026-11-28 · foundation 05-02 Wire router into App — `MaterialApp.router`, router owned + disposed by `App`
 - 2026-11-28 · E0 done (PR #6 merged) · E1 design pages pulled into `docs/brief/design/project/` · E1 breakdown draft
 - 2026-11-28 · design_system 01-01 Bundle fonts — static TTFs (Baloo 700, Readex 400-700), OFL in `LicenseRegistry`
+- 2026-11-28 · design_system 01-02 Colors — `HikaColors` ThemeExtension, 34 tokens from `M1-Colors` (+ `borderInput`)
 
 ## Starter message for a new chat
-> كمّل من docs/progress.md — التاسك الجاية: design_system 01-02 colors على `feat/ds-tokens`.
+> كمّل من docs/progress.md — التاسك الجاية: design_system 01-03 typography على `feat/ds-tokens`.
