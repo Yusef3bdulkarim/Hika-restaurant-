@@ -18,7 +18,7 @@
 - **Do NOT touch:** `lib/app.dart` (task 02), DI.
 - **Tests:** `should show placeholder page when location is home` · `should show not-found page when location is unknown` (pump a `MaterialApp.router` with l10n + `createRouter()`; go to `/nope`).
 - **Done when:** analyze clean, tests pass.
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ## 02 — Wire router into App
 - **Layer:** wiring
