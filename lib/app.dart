@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import 'core/l10n/generated/app_localizations.dart';
 import 'core/router/app_router.dart';
+import 'core/theme/hika_theme.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -27,6 +28,7 @@ class _AppState extends State<App> {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       onGenerateTitle: (context) => AppLocalizations.of(context).appTitle,
+      theme: HikaTheme.light(),
       routerConfig: _router,
     );
   }

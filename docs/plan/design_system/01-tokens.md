@@ -72,7 +72,7 @@
 - **Do NOT touch:** router, `bootstrap.dart`.
 - **Tests:** `should expose HikaColors and HikaTextStyles when theme is built` · `should map primary and background into ColorScheme and scaffold when theme is built` · `should read colors from context when widget is under HikaTheme` (pump a widget).
 - **Done when:** analyze clean, all tests pass (including `app_test.dart`).
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ## 06 — Design gallery (dev only)
 - **Layer:** presentation (core) + wiring
