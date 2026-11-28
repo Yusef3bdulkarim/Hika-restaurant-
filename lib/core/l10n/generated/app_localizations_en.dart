@@ -14,4 +14,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get routeNotFound => 'الصفحة غير موجودة';
+
+  @override
+  String moneyAmount(String amount) {
+    return '$amount ج.م';
+  }
+
+  @override
+  String timeAm(String time) {
+    return '$time ص';
+  }
+
+  @override
+  String timePm(String time) {
+    return '$time م';
+  }
 }

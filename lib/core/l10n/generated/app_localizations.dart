@@ -109,6 +109,24 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'الصفحة غير موجودة'**
   String get routeNotFound;
+
+  /// An amount in Egyptian pounds. amount is pre-formatted (Western digits, thousands comma). Keep the non-breaking space so the unit never wraps alone.
+  ///
+  /// In ar, this message translates to:
+  /// **'{amount} ج.م'**
+  String moneyAmount(String amount);
+
+  /// Clock time before noon, 12h (e.g. 9:30 ص). time is pre-formatted with Western digits. Non-breaking space keeps the period on the same line.
+  ///
+  /// In ar, this message translates to:
+  /// **'{time} ص'**
+  String timeAm(String time);
+
+  /// Clock time from noon, 12h (e.g. 9:30 م). time is pre-formatted with Western digits. Non-breaking space keeps the period on the same line.
+  ///
+  /// In ar, this message translates to:
+  /// **'{time} م'**
+  String timePm(String time);
 }
 
 class _AppLocalizationsDelegate

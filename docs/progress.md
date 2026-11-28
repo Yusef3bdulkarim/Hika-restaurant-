@@ -4,13 +4,13 @@ _Last updated: 2026-11-28_
 
 ## Now
 - **Epic:** E1 — `design_system`
-- **Sub-feature:** 02 `assets` — plan `docs/plan/design_system/02-assets.md` (approved); 01 `tokens` in PR #7
-- **Branch:** `feat/ds-assets` (stacked on `feat/ds-tokens` until PR #7 merges)
-- **Current task:** 02 assets: all tasks done, device check OK (user, 2026-11-28); `@code-reviewer` PASS WITH NITS, nits fixed (see plan "Review") → waiting: user commit, PR #7 merge, then PR to `develop`
-- E0 done: 01-05 merged to `develop` (PR #1-#6) · E1 breakdown approved
+- **Sub-feature:** 03 `formatters` — plan `docs/plan/design_system/03-formatters.md` (approved)
+- **Branch:** `feat/ds-formatters` (develop merged in after PR #8)
+- **Current task:** 03 formatters: both tasks done; `@code-reviewer` PASS WITH NITS, nits fixed → PR open
+- E0 done (PR #1-#6) · E1: 01 tokens merged (PR #7), 02 assets merged (PR #8)
 
 ## Next
-- 02-01 icon assets → 02-02 HikaIcon → 02-03 illustrations → 02-04 logo (vectorized)
+- Review + PR 03 → plan `design_system/04-buttons_inputs.md`
 
 ## Open decisions
 - Discovery: Telegram cost decision + iOS-later confirmation still marked pending in `00-discovery-notes.md`
@@ -60,6 +60,8 @@ _Last updated: 2026-11-28_
 - 2026-11-28 · design_system 02-02 HikaIcon — enum of 59, IconTheme color, mirror in LTR, gallery section
 - 2026-11-28 · design_system 02-03 Illustrations — 15 SVGs, `HikaIllustration` (120 / 140), gallery section
 - 2026-11-28 · design_system 02-04 Logo — potrace from PNG masks, pixel diff ≤ 0.6 %, `HikaLogo`
+- 2026-11-28 · design_system 03-01 Numbers + money — `formatNumber` (`en` locale: `ar_EG` gives Arabic-Indic digits), `l10n.money()`, ARB `moneyAmount`
+- 2026-11-28 · design_system 03-02 Clock time — `formatClock`, `l10n.time()`, midnight `12 ص`, NBSP before ص/م
 
 ## Starter message for a new chat
-> كمّل من docs/progress.md — التاسك الجاية: @code-reviewer على feat/ds-assets ثم PR، وبعدها plan `design_system/03-formatters.md` على `feat/ds-assets`.
+> كمّل من docs/progress.md — التاسك الجاية: @code-reviewer على feat/ds-formatters ثم PR، وبعدها plan `design_system/04-buttons_inputs.md`.
