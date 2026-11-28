@@ -59,7 +59,7 @@
 - **Do NOT touch:** other theme files.
 - **Tests:** none (constants only, no logic).
 - **Done when:** analyze clean.
-- **Model:** Sonnet · **Owner:** Claude · **Status:** todo
+- **Model:** Sonnet · **Owner:** Claude · **Status:** done
 
 ## 05 — ThemeData + wire into App
 - **Layer:** wiring
