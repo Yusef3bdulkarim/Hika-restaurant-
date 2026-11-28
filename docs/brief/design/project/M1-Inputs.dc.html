@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>هيكا: الخانات</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@600;700&amp;family=Readex+Pro:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#5C1118}a:hover{color:#74161E}
+button,input,textarea{font-family:inherit}
+button{cursor:pointer}
+input::placeholder,textarea::placeholder{color:#6B5F58}
+</style>
+</helmet>
+<div style="width: 1000px; height: 1340px; box-sizing: border-box; padding: 48px; background: #FAF6F0; font-family: 'Readex Pro', system-ui, sans-serif; color: #2B2523; direction: rtl; display: flex; flex-direction: column; gap: 32px">
+
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h1 style="margin: 0; font-family: 'Baloo Bhaijaan 2', system-ui, sans-serif; font-size: 40px; font-weight: 700; line-height: 48px">الخانات</h1>
+<p style="margin: 0; font-size: 15px; line-height: 24px; color: #6B5F58">ارتفاع 52، وزاوية md، والـ Label فوق وظاهر دايماً، والـ Placeholder مثال حقيقي. البريد الإلكتروني والموبايل والأرقام LTR جوه خانتها.</p>
+</div>
+
+<!-- States -->
+<section style="display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: 20px; font-weight: 700; line-height: 28px">حالات الخانة</h2>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px 24px; background: #FFFFFF; border: 1px solid #E8E0D6; border-radius: 20px; padding: 24px">
+
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 13px; color: #6B5F58">عادية فاضية</span>
+<label style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; font-weight: 500; line-height: 20px">الاسم</span><span style="height: 52px; box-sizing: border-box; display: flex; align-items: center; padding: 0 16px; background: #FFFFFF; border: 1px solid #8F8378; border-radius: 12px"><input placeholder="أحمد محمد" style="flex: 1; min-width: 0; border: 0; outline: none; background: none; font-size: 15px; line-height: 24px; color: #2B2523"></span></label></div>
+
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 13px; color: #6B5F58">نشطة (بيكتب)</span>
+<label style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; font-weight: 500; line-height: 20px">الاسم</span><span style="height: 52px; box-sizing: border-box; display: flex; align-items: center; gap: 1px; padding: 0 15.5px; background: #FFFFFF; border: 1.5px solid #8E1B25; border-radius: 12px; font-size: 15px; line-height: 24px">أحمد<span style="width: 1.5px; height: 22px; background: #8E1B25"></span></span></label></div>
+
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 13px; color: #6B5F58">متملية صح</span>
+<label style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; font-weight: 500; line-height: 20px">الاسم</span><span style="height: 52px; box-sizing: border-box; display: flex; align-items: center; padding: 0 16px; background: #FFFFFF; border: 1px solid #8F8378; border-radius: 12px; font-size: 15px; line-height: 24px">أحمد محمد</span></label></div>
+
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 13px; color: #6B5F58">غلط</span>
+<label style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; font-weight: 500; line-height: 20px">رقم الهاتف</span><span style="height: 52px; box-sizing: border-box; display: flex; align-items: center; padding: 0 15.5px; background: #FFFFFF; border: 1.5px solid #C4161C; border-radius: 12px"><span dir="ltr" style="flex: 1; font-size: 15px; line-height: 24px">0101234</span></span><span role="alert" style="display: flex; align-items: flex-start; gap: 6px; font-size: 13px; line-height: 20px; color: #C4161C"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 2px"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5v5.5"></path><circle cx="12" cy="16.3" r="0.6" fill="currentColor"></circle></svg>الرقم ناقص. رقم الهاتف 11 رقماً ويبدأ بـ 01</span></label></div>
+
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 13px; color: #6B5F58">مقفولة</span>
+<label style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; font-weight: 500; line-height: 20px; color: #6B5F58">البريد الإلكتروني</span><span style="height: 52px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 0 16px; background: #F3EDE5; border: 1px solid #E8E0D6; border-radius: 12px; color: #A69B92"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2"></rect><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"></path></svg><span dir="ltr" style="flex: 1; font-size: 15px; line-height: 24px">ahmed@gmail.com</span></span><span style="font-size: 13px; line-height: 20px; color: #6B5F58">يمكن تغيير البريد الإلكتروني من الإعدادات</span></label></div>
+
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 13px; color: #6B5F58">اختيار من قايمة</span>
+<label style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; font-weight: 500; line-height: 20px">المنطقة أو القرية</span><button style="height: 52px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; background: #FFFFFF; border: 1px solid #8F8378; border-radius: 12px; font-size: 15px; line-height: 24px; color: #2B2523; text-align: start">سيدي سالم<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6B5F58" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10l5 5 5-5"></path></svg></button></label></div>
+</div>
+</section>
+
+<!-- Special fields -->
+<section style="display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: 20px; font-weight: 700; line-height: 28px">خانات خاصة</h2>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; background: #FFFFFF; border: 1px solid #E8E0D6; border-radius: 20px; padding: 24px">
+
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 13px; color: #6B5F58">كلمة المرور مخفية</span>
+<label style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; font-weight: 500; line-height: 20px">كلمة المرور</span><span style="height: 52px; box-sizing: border-box; display: flex; align-items: center; padding: 0 16px 0 2px; background: #FFFFFF; border: 1px solid #8F8378; border-radius: 12px"><span dir="ltr" style="flex: 1; font-size: 18px; letter-spacing: 2px; line-height: 24px">••••••••</span><button aria-label="إظهار كلمة المرور" style="flex: none; width: 48px; height: 48px; padding: 0; border: 0; background: none; color: #6B5F58; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.8 12S6 5.5 12 5.5 21.2 12 21.2 12 18 18.5 12 18.5 2.8 12 2.8 12Z"></path><circle cx="12" cy="12" r="3"></circle></svg></button></span><span style="font-size: 13px; line-height: 20px; color: #6B5F58">8 حروف على الأقل</span></label></div>
+
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 13px; color: #6B5F58">كلمة المرور ظاهرة</span>
+<label style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; font-weight: 500; line-height: 20px">كلمة المرور</span><span style="height: 52px; box-sizing: border-box; display: flex; align-items: center; padding: 0 16px 0 2px; background: #FFFFFF; border: 1px solid #8F8378; border-radius: 12px"><span dir="ltr" style="flex: 1; font-size: 15px; line-height: 24px">hika2026</span><button aria-label="إخفاء كلمة المرور" style="flex: none; width: 48px; height: 48px; padding: 0; border: 0; background: none; color: #2B2523; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 5.8A9.6 9.6 0 0 1 12 5.5c6 0 9.2 6.5 9.2 6.5a16 16 0 0 1-2.6 3.5M6.4 7.2C4 8.9 2.8 12 2.8 12s3.2 6.5 9.2 6.5a9 9 0 0 0 4.4-1.1M9.9 9.9a3 3 0 0 0 4.2 4.2M4 4l16 16"></path></svg></button></span><span style="font-size: 13px; line-height: 20px; color: #6B5F58">8 حروف على الأقل</span></label></div>
+
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 13px; color: #6B5F58">الموبايل LTR</span>
+<label style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; font-weight: 500; line-height: 20px">رقم الهاتف</span><span style="height: 52px; box-sizing: border-box; display: flex; align-items: center; padding: 0 16px; background: #FFFFFF; border: 1px solid #8F8378; border-radius: 12px"><input dir="ltr" type="tel" placeholder="01012345678" style="flex: 1; min-width: 0; border: 0; outline: none; background: none; font-size: 15px; line-height: 24px; color: #2B2523"></span><span style="font-size: 13px; line-height: 20px; color: #6B5F58">يتصل المندوب بهذا الرقم إذا لم يجد المكان</span></label></div>
+
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 13px; color: #6B5F58">البريد الإلكتروني باقتراح تصحيح</span>
+<label style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; font-weight: 500; line-height: 20px">البريد الإلكتروني</span><span style="height: 52px; box-sizing: border-box; display: flex; align-items: center; padding: 0 16px; background: #FFFFFF; border: 1px solid #8F8378; border-radius: 12px"><span dir="ltr" style="flex: 1; font-size: 15px; line-height: 24px">ahmed@gmial.com</span></span></label>
+<span style="display: flex; align-items: center; gap: 4px; font-size: 13px; line-height: 20px; color: #6B5F58">هل المقصود<button style="min-height: 32px; padding: 0 4px; border: 0; background: none; color: #5C1118; font-size: 13px; font-weight: 600; text-decoration: underline" dir="ltr">ahmed@gmail.com</button>؟</span></div>
+
+<div style="display: flex; flex-direction: column; gap: 8px; grid-column: span 2"><span style="font-size: 13px; color: #6B5F58">متعددة السطور بعداد حروف</span>
+<label style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; font-weight: 500; line-height: 20px">وصف المكان وأقرب علامة مميزة</span><span style="box-sizing: border-box; display: flex; flex-direction: column; padding: 14px 16px 8px 16px; background: #FFFFFF; border: 1px solid #8F8378; border-radius: 12px"><textarea rows="2" placeholder="البيت المجاور لمسجد النور، البوابة الخضراء" style="border: 0; outline: none; resize: none; background: none; font-size: 15px; line-height: 24px; color: #2B2523"></textarea><span dir="ltr" style="align-self: flex-start; font-size: 12px; line-height: 16px; color: #6B5F58">0/150</span></span></label></div>
+
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 13px; color: #6B5F58">متعددة السطور غلط</span>
+<label style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; font-weight: 500; line-height: 20px">وصف المكان</span><span style="box-sizing: border-box; display: flex; flex-direction: column; padding: 13.5px 15.5px 7.5px 15.5px; background: #FFFFFF; border: 1.5px solid #C4161C; border-radius: 12px; min-height: 80px"><span style="flex: 1"></span><span dir="ltr" style="align-self: flex-start; font-size: 12px; line-height: 16px; color: #6B5F58">0/150</span></span><span role="alert" style="display: flex; align-items: flex-start; gap: 6px; font-size: 13px; line-height: 20px; color: #C4161C"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 2px"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5v5.5"></path><circle cx="12" cy="16.3" r="0.6" fill="currentColor"></circle></svg>الوصف مطلوب ليصل المندوب إلى البيت</span></label></div>
+</div>
+</section>
+
+<!-- Search -->
+<section style="display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: 20px; font-weight: 700; line-height: 28px">البحث: 48، و radius.full، وخلفية surfaceMuted</h2>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; background: #FFFFFF; border: 1px solid #E8E0D6; border-radius: 20px; padding: 24px">
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 13px; color: #6B5F58">فاضي</span><label style="height: 48px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 0 16px; background: #F3EDE5; border-radius: 999px; color: #6B5F58"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg><input type="search" aria-label="البحث في القائمة" placeholder="بيتزا ميكس لحوم، فطير حلو، كريب..." style="flex: 1; min-width: 0; border: 0; outline: none; background: none; font-size: 15px; line-height: 24px; color: #2B2523"></label></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 13px; color: #6B5F58">بيكتب ومعاه مسح</span><label style="height: 48px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 0 4px 0 16px; background: #F3EDE5; border: 1.5px solid #8E1B25; border-radius: 999px; color: #2B2523"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg><span style="flex: 1; font-size: 15px; line-height: 24px">فطير</span><button aria-label="مسح البحث" style="width: 40px; height: 40px; padding: 0; border: 0; background: none; color: #6B5F58; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="currentColor"></circle><path d="M9.5 9.5l5 5M14.5 9.5l-5 5" stroke="#F3EDE5" stroke-width="1.75" stroke-linecap="round"></path></svg></button></label></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 13px; color: #6B5F58">مقفول (مفيش نت)</span><label style="height: 48px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 0 16px; background: #F3EDE5; border-radius: 999px; color: #A69B92"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg><span style="flex: 1; font-size: 15px; line-height: 24px">البحث غير متاح دون إنترنت</span></label></div>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1000,"height":1340}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>
