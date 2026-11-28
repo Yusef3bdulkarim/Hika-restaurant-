@@ -4,13 +4,13 @@ _Last updated: 2026-11-28_
 
 ## Now
 - **Epic:** E1 — `design_system`
-- **Sub-feature:** 01 `tokens` — plan `docs/plan/design_system/01-tokens.md` (approved)
-- **Branch:** `feat/ds-tokens`
-- **Current task:** 01 tokens: all tasks done, device check OK (user, 2026-11-28); `@code-reviewer` PASS WITH NITS, nits fixed (see plan "Review") → waiting: user commit + PR to `develop`
+- **Sub-feature:** 02 `assets` — plan `docs/plan/design_system/02-assets.md` (approved); 01 `tokens` in PR #7
+- **Branch:** `feat/ds-assets` (stacked on `feat/ds-tokens` until PR #7 merges)
+- **Current task:** 02-01 icon assets done — waiting: user commit; next 02-02 HikaIcon
 - E0 done: 01-05 merged to `develop` (PR #1-#6) · E1 breakdown approved
 
 ## Next
-- 01-01 fonts → 01-02 colors → 01-03 typography → 01-04 const tokens → 01-05 ThemeData + App → 01-06 gallery
+- 02-01 icon assets → 02-02 HikaIcon → 02-03 illustrations → 02-04 logo (vectorized)
 
 ## Open decisions
 - Discovery: Telegram cost decision + iOS-later confirmation still marked pending in `00-discovery-notes.md`
@@ -56,6 +56,7 @@ _Last updated: 2026-11-28_
 - 2026-11-28 · design_system 01-04 Const tokens — `HikaSpacing`, `HikaRadii`, `HikaShadows`, `HikaMotion`
 - 2026-11-28 · design_system 01-05 ThemeData + App — full `ColorScheme`, 15 `TextTheme` slots, letterSpacing 0, `context.colors`
 - 2026-11-28 · design_system 01-06 Design gallery — dev-only route, `App(flavor:)`, token sections, overflow test 360 / 130 %
+- 2026-11-28 · design_system 02-01 Icon assets — 118 SVGs, `flutter_svg` 2.5.1, masks verified by render; icons drawn for RTL
 
 ## Starter message for a new chat
-> كمّل من docs/progress.md — التاسك الجاية: @code-reviewer على feat/ds-tokens ثم PR، وبعدها plan `design_system/02-assets.md`.
+> كمّل من docs/progress.md — التاسك الجاية: 02-02 HikaIcon على `feat/ds-assets`.

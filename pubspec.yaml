@@ -43,6 +43,7 @@ dependencies:
   get_it: ^9.3.0
   firebase_core: ^5.2.0
   go_router: ^18.1.4
+  flutter_svg: ^2.5.1
 
 dev_dependencies:
   flutter_test:
@@ -69,10 +70,11 @@ flutter:
   generate: true
   uses-material-design: true
 
-  # OFL license texts, registered with LicenseRegistry in bootstrap.dart
   assets:
+    # OFL license texts, registered with LicenseRegistry in bootstrap.dart
     - assets/fonts/OFL-BalooBhaijaan2.txt
     - assets/fonts/OFL-ReadexPro.txt
+    - assets/icons/
 
   fonts:
     - family: BalooBhaijaan2
